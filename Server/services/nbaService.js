@@ -1,5 +1,5 @@
 import axios from "axios";
-import { nbaApiKey } from '../config.js';
+import config from '../config.mjs'
 
 
 export const getPlayerImageBio = async (playerId) => {
@@ -11,23 +11,22 @@ export const getPlayerImageBio = async (playerId) => {
       statsToGet: 'averages'
     },
     headers: {
-      'X-RapidAPI-Key': `${nbaApiKey}`,
+      'X-RapidAPI-Key': `${config.nbaApiKey}`,
       'X-RapidAPI-Host': 'tank01-fantasy-stats.p.rapidapi.com'
     }
   };
 
   try {
     const response = await axios.request(options);
-    const data = response.json()
-    const {stats, ...playerImgBio} = data
-    return data
+    const {stats, ...playerImgBio} = response
+    return response
   } catch (error) {
     console.error(error);
     throw new Error('Error fetching Bio and Image from API')
   }
 }
 
-export const getPlayerGamesPlayed= async(playerId) => {
+export const getPlayerGamesPlayed = async(playerId) => {
   const options = {
     method: 'GET',
     url: 'https://tank01-fantasy-stats.p.rapidapi.com/getNBAGamesForPlayer',
@@ -37,17 +36,16 @@ export const getPlayerGamesPlayed= async(playerId) => {
       fantasyPoints: 'true',
     },
     headers: {
-      'X-RapidAPI-Key': 'c3fb093a86mshbd0ee4dca6b6d7cp146aa9jsn9d452d08c083',
+      'X-RapidAPI-Key': `${config.nbaApiKey}`,
       'X-RapidAPI-Host': 'tank01-fantasy-stats.p.rapidapi.com'
     }
   };
 
   try {
     const response = await axios.request(options);
-    const data = response.json()
-    return data
+    return response
   } catch (error) {
-    throw new Error('Error fetching Player Games')
+    throw new Error('Sorry No Games for that player')
   }
 }
 
