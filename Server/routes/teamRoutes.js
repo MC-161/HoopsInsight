@@ -1,14 +1,15 @@
 import { Router } from "express";
-import {fetchGamesPlayed, getAllPlayers, getPlayer} from "../controllers/playerController.js"
+import {getAllTeams, getTeamStats, getTeamBio, getTeamTopPerformers, getVideos} from "../controllers/teamController.js"
 
 const router = Router();
 
 // Route to get All Players 
-router.get('/teams', getAllPlayers)
-// Route to get Player By Id 
-router.get('/players/:id', getPlayer)
-// ROute to get Player Games Played  tank01
-router.get('/players/:id/gamesPlayed', fetchGamesPlayed)
-
-
+router.get('/teams', getAllTeams)
+// Route to get Team Stats By Id 
+router.get('/teams/:id/stats', getTeamStats)
+// Route to get Team Info
+router.get('/teams/:id/info', getTeamBio)
+// Route to get Team Top Performers
+router.get('/teams/:id/top', getTeamTopPerformers)
+router.get('/teams/:id/videos', getVideos)
 export default router;

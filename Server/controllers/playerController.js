@@ -1,9 +1,9 @@
-import Player from "../models/playerModel.js"
+import playerService from '../services/playerService.js';
 import {getPlayerGamesPlayed, getPlayerImageBio} from '../services/nbaService.js';
 
 export const getAllPlayers = async (req, res ) => {
   try {
-    const players = await Player.find().select('name _id').lean();  // Using lean to avoid mongoose document instances
+    const players = await playerService.getAllPlayers()
     if (!players || players.length === 0) {
       return res.status(404).json({ message: 'No players found' });
     }
@@ -16,7 +16,7 @@ export const getAllPlayers = async (req, res ) => {
 export const getPlayer = async (req, res) => {
   try {
     const {id} = req.params
-    const playerStats = await Player.findById(id)
+    const playerStats = await playerService.getPlayerById(id)
     const playerImgBio = await getPlayerImageBio(id)
     const BioImage = playerImgBio.data
     const playerInfo = {playerStats, BioImage}
