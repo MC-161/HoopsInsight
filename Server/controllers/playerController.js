@@ -1,5 +1,5 @@
 import playerService from '../services/playerService.js';
-import {getPlayerGamesPlayed, getPlayerImageBio} from '../services/nbaService.js';
+import nbaService from "../services/nbaService.js"
 
 export const getAllPlayers = async (req, res ) => {
   try {
@@ -17,9 +17,8 @@ export const getPlayer = async (req, res) => {
   try {
     const {id} = req.params
     const playerStats = await playerService.getPlayerById(id)
-    const playerImgBio = await getPlayerImageBio(id)
-    const BioImage = playerImgBio.data
-    const playerInfo = {playerStats, BioImage}
+    const playerImgBio = await nbaService.getPlayerImageBio(id);
+    const playerInfo = {playerStats, playerImgBio : playerImgBio.data}
     res.status(200).json(playerInfo)
   } catch (error) {
     res.status(404).json({message: error.message})
@@ -29,7 +28,7 @@ export const getPlayer = async (req, res) => {
 export const fetchGamesPlayed = async (req, res) => {
   try {
     const {id} = req.params
-    const playerGames = await getPlayerGamesPlayed(id)
+    const playerGames = await nbaService.getPlayerGamesPlayed(id);
     res.status(200).json(playerGames.data)
   } catch (error) {
     res.status(404).json({message: error.message})

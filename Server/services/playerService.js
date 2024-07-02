@@ -14,7 +14,7 @@ const playerService = {
       const playerStats = await Player.findById(id)
       return playerStats
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving player" + error.message);
     }
   }
 
