@@ -8,7 +8,7 @@ const nbaService = {
       url: 'https://tank01-fantasy-stats.p.rapidapi.com/getNBAPlayerInfo',
       params: {
         playerID: `${playerId}`,
-        statsToGet: 'averages'
+        statsToGet: 'totals'
       },
       headers: {
         'X-RapidAPI-Key': `${config.nbaApiKey}`,

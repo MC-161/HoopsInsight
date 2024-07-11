@@ -6,7 +6,7 @@ const teamService = {
       const teams = await Team.find().select('name _id').lean();
       return teams
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving teams" + error.message);
     }
   },
   getTeamStats: async (id) => {
@@ -14,7 +14,7 @@ const teamService = {
       const teamStats = await Team.findById(id).select('stats').lean();
       return teamStats
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving team" + error.message);
     }
   },
   getTeamTop: async (id) => {
@@ -22,7 +22,7 @@ const teamService = {
       const topPerformers = await Team.findById(id).select('topPerformers').lean()
       return topPerformers
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving team" + error.message);
     }
   },
   getTeamVideos: async (id) => {
@@ -30,7 +30,7 @@ const teamService = {
       const teamVideos = await Team.findById(id).select("videos").lean()
       return teamVideos
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving team" + error.message);
     }
   },
   getTeamBio : async (id) => {
@@ -38,7 +38,7 @@ const teamService = {
       const teamBio = Team.findById(id).select('name logo conference').lean();
       return teamBio;
     } catch (error) {
-      throw new Error("Error Retrieving players" + error.message);
+      throw new Error("Error Retrieving team" + error.message);
     }
   },
 }

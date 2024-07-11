@@ -38,7 +38,7 @@ const createServer = () => {
       // }
 
       // LOAD PLAYER DATA
-      // // Iterate over each player in the NBA player data
+      // Iterate over each player in the NBA player data
       // for (const playerId in data.body) {
       //   const playerData = data.body[playerId];
 

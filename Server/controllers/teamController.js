@@ -57,11 +57,11 @@ export const getVideos = async(req, res) => {
   try {
     // get id 
     const {id} = req.params
-    const teamVideos = await Team.findById(id).select("videos").lean()
-    res.status(200).json(teamVideos)
+    const teamVideos = await teamService.getTeamVideos(id)
     if (!teamVideos) {
-      res.status(404).json({message: error.message})
+      return res.status(404).json({ message: "Data Not Found" });
     }
+    res.status(200).json(teamVideos);
   } catch (error) {
     res.status(500).json({message: error.message})
   }
