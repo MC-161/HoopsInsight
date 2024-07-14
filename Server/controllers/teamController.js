@@ -4,12 +4,18 @@ import teamService from "../services/teamService.js";
 export const getAllTeams = async (req, res) => {
   try {
     const Teams = await teamService.getAllTeams();
-    res.status(200).json(Teams);
-    if (!Teams) {
-      res.status(404).json({message: "Data Not Found"})
+    if (!Teams || Teams.length === 0) {
+      return res.status(404).json({
+        message: "Data Not Found",
+        errorCode: "ERR404"
+      });
     }
+    res.status(200).json(Teams);
   } catch (error) {
-    res.status(500).json({message: error.message});
+    res.status(500).json({
+      message: "An unexpected error occurred on the server.",
+      errorCode: "ERR500"
+    });
   }
 }
 // Method GET Team by _ID
@@ -22,7 +28,10 @@ export const getTeamStats = async(req, res) => {
       res.status(404).json({message: "Data Not Found"})
     }
   } catch (error) {
-    res.status(500).json({message: error.message});
+    res.status(500).json({
+      message: "An unexpected error occurred on the server.",
+      errorCode: "ERR500"
+    });
   }
 }
 // Method GET Team BIO
@@ -32,10 +41,16 @@ export const getTeamBio = async(req, res) => {
     const teamBio = await teamService.getTeamBio(id);
     res.status(200).json(teamBio);
     if (!teamBio) {
-      res.status(404).json({message: "Data Not Found"})
+      return res.status(404).json({
+        message: "Data Not Found",
+        errorCode: "ERR404"
+      });
     }
   } catch (error) {
-    res.status(500).json({message: error.message})
+    res.status(500).json({
+      message: "An unexpected error occurred on the server.",
+      errorCode: "ERR500"
+    });
   }
 }
 // Method GET Team Top Performers
@@ -48,7 +63,10 @@ export const getTeamTopPerformers = async(req, res) => {
       res.status(404).json({message: "Data Not Found"})
     }
   } catch (error) {
-    res.status(500).json({message: error.message})
+    res.status(500).json({
+      message: "An unexpected error occurred on the server.",
+      errorCode: "ERR500"
+    });
   }
 } 
 // Method 
@@ -59,11 +77,17 @@ export const getVideos = async(req, res) => {
     const {id} = req.params
     const teamVideos = await teamService.getTeamVideos(id)
     if (!teamVideos) {
-      return res.status(404).json({ message: "Data Not Found" });
+      return res.status(404).json({
+        message: "Data Not Found",
+        errorCode: "ERR404"
+      });
     }
     res.status(200).json(teamVideos);
   } catch (error) {
-    res.status(500).json({message: error.message})
+    res.status(500).json({
+      message: "An unexpected error occurred on the server.",
+      errorCode: "ERR500"
+    });
   }
 }
 // Method POST Team Video 

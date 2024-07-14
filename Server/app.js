@@ -4,7 +4,6 @@ import createServer from './server.js';
 import cors from 'cors'
 import rateLimit from 'express-rate-limit';
 
-
 const app = createServer();
 
 const limiter = rateLimit({
