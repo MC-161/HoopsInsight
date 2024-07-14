@@ -1,10 +1,11 @@
 import config from "./config.mjs"
 import express from 'express';
 import mongoose from 'mongoose';
-import data from "./data/player_stats_2.json" assert { type: "json" };
-import teamData from "./data/team_stats_modified.json" assert { type: "json" };
-import Player from './models/playerModel.js';
-import Team from './models/teamModel.js';
+// import data from "./data/player_stats_2.json" assert { type: "json" };
+// import teamData from "./data/team_stats_modified.json" assert { type: "json" };
+// import Player from './models/playerModel.js';
+// import Team from './models/teamModel.js';
+import swaggerDocs from './swagger.js';
 
 const createServer = () => {
   const app = express();
@@ -15,7 +16,13 @@ const createServer = () => {
     .then(async () => {
       console.log("Connected to MongoDB");
       app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+      swaggerDocs(app, PORT)
+    })
+    .catch((error) => console.log(`${error} did not connect`));
+    return app
+};
 
+export default createServer;
       // // LOAD TEAM DATA
       // for (const teamId in teamData.body) {
       //   const Tdata = teamData.body[teamId];
@@ -54,9 +61,3 @@ const createServer = () => {
       //     console.error(`Failed to insert player ${playerData.name}:`, error);
       //   }
       // }
-    })
-    .catch((error) => console.log(`${error} did not connect`));
-    return app
-};
-
-export default createServer;
