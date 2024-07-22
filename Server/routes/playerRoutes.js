@@ -27,7 +27,7 @@ const router = Router();
 
 /**
  * @swagger
- * /players:
+ * /api/players:
  *   get:
  *     summary: Get all players
  *     tags: [Players]
@@ -51,11 +51,11 @@ const router = Router();
  *
  */
 // Route to get All Players
-router.get("/players", getAllPlayers);
+router.get("/", getAllPlayers);
 
 /**
  * @swagger
- * /players/{id}:
+ * /api/players/{id}:
  *  get:
  *    summary: Get Player By ID
  *    tags: [Players]
@@ -74,18 +74,15 @@ router.get("/players", getAllPlayers);
  *             schema:
  *               $ref: '#/components/schemas/Player'
  *       404:
- *         description: Player Not Found In DataBase
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error404'
+ *          $ref: '#/components/responses/ErrorNotFound'
+ *       
  */
 // Route to get Player By Id
-router.get("/players/:id", getPlayer);
+router.get("/:id", getPlayer);
 
 /**
  * @swagger
- * /players/{id}/gamesPlayed:
+ * /api/players/{id}/gamesPlayed:
  *  get:
  *    summary: Get Player Games from Current Season
  *    tags: [Players]
@@ -97,7 +94,7 @@ router.get("/players/:id", getPlayer);
  *        required: true
  *        description: The player ID
  *    responses:
- *      200:
+ *       200:
  *        description: List of Player games Stats
  *        content:
  *          application/json:
@@ -113,17 +110,15 @@ router.get("/players/:id", getPlayer);
  *                        type: array
  *                        items:
  *                          $ref: '#/components/schemas/PlayerStats'
- *      404:
- *         description: Player Games Not Found In DataBase
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Error404'
+ *       404:
+ *          $ref: '#/components/responses/ErrorNotFound'
+ *       500:
+ *         $ref: '#/components/responses/ErrorInternalServerError'
  *
  *
  */
 
 // ROute to get Player Games Played  tank01
-router.get("/players/:id/gamesPlayed", fetchGamesPlayed);
+router.get("/:id/gamesPlayed", fetchGamesPlayed);
 
 export default router;

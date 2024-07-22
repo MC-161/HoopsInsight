@@ -3,8 +3,10 @@ import routes from './routes/index.js';
 import createServer from './server.js';
 import cors from 'cors'
 import rateLimit from 'express-rate-limit';
+import express from 'express';
 
 const app = createServer();
+app.set('trust proxy', 1);
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
@@ -18,7 +20,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors())
-app.use('/', routes);
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+
+// Use routes from routes directory
+app.use('/api', routes);
+
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 

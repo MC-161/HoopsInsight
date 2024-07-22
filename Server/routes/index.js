@@ -4,8 +4,8 @@ import teamRoutes from './teamRoutes.js'
 const router = Router();
 
 // Use player routes
-router.use('/', playerRoutes);
-router.use('/', teamRoutes);
+router.use('/players', playerRoutes);
+router.use('/teams', teamRoutes);
 
 
 export default router;
