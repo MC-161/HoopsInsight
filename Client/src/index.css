@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
   
+
+.content{
+    background-image: url('./assets/Landing.webp');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-position: center center; /* Centers the image */
+    background-attachment: fixed; /* Fixes the background image in place */
+}
