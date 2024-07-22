@@ -8,7 +8,7 @@ const router = Router();
 
 /**
  * @swagger
- * /teams:
+ * /api/teams:
  *  get:
  *    summary: Get All teams 
  *    tags: [Teams]
@@ -30,12 +30,12 @@ const router = Router();
  *
  */
 // Route to get All Players 
-router.get('/teams', getAllTeams)
+router.get('/', getAllTeams)
 
 
 /**
  * @swagger
- * /teams/{id}/stats:
+ * /api/teams/{id}/stats:
  *  get:
  *    summary: Get Teams Statistical Metrics By Season Year
  *    tags: [Teams]
@@ -61,14 +61,14 @@ router.get('/teams', getAllTeams)
  * 
  */
 // Route to get Team Stats By Id 
-router.get('/teams/:id/stats', getTeamStats)
+router.get('/:id/stats', getTeamStats)
 
 
 
 
 /**
  * @swagger
- * /teams/{id}/info:
+ * /api/teams/{id}/info:
  *  get:
  *    summary: Get Teams basic info 
  *    tags: [Teams]
@@ -106,11 +106,11 @@ router.get('/teams/:id/stats', getTeamStats)
  *        
  */
 // Route to get Team Info
-router.get('/teams/:id/info', getTeamBio)
+router.get('/:id/info', getTeamBio)
 
 /**
  * @swagger
- * /teams/{id}/top:
+ * /api/teams/{id}/top:
  *  get:
  *    summary: Get Teams top perfomers 
  *    tags: [Teams]
@@ -221,12 +221,12 @@ router.get('/teams/:id/info', getTeamBio)
  *        
  */
 // Route to get Team Top Performers
-router.get('/teams/:id/top', getTeamTopPerformers)
+router.get('/:id/top', getTeamTopPerformers)
 
 
 /**
  * @swagger
- * /teams/{id}/videos:
+ * /api/teams/{id}/videos:
  *  get:
  *    summary: Get Teams videos
  *    tags: [Teams]
@@ -260,5 +260,5 @@ router.get('/teams/:id/top', getTeamTopPerformers)
  *         $ref: '#/components/responses/ErrorInternalServerError'
  *        
  */
-router.get('/teams/:id/videos', getVideos)
+router.get('/:id/videos', getVideos)
 export default router;

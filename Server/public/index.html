@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA Stats API</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f6f6f6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative; /* Needed for the border gradient overlay */
+            overflow: hidden; /* Needed for the border gradient overlay */
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0; bottom: 0; left: 0; right: 0;
+            z-index: -1;
+            background: linear-gradient(to bottom right, #8e44ad, #f1c40f);
+            transform: skew(-10deg) scaleX(1.5);
+        }
+        .header {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+        }
+        .content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 0 0 8px 8px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #1e3c72;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+        .section p {
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #1e3c72;
+            color: #fff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .cta-button:hover {
+            background-color: #2a5298;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>NBA Stats API</h1>
+            <p>Comprehensive data on NBA players and teams from 2003 to 2024</p>
+        </div>
+        <div class="content">
+            <div class="section">
+                <h2>About</h2>
+                <p>Welcome to the NBA Stats API! This API provides detailed information on NBA players and teams spanning the years 2003 to 2024. Whether you're a developer, statistician, or an avid basketball fan, our API offers a wealth of data to help you analyze and enjoy the game.</p>
+            </div>
+            <div class="section">
+                <h2>Features</h2>
+                <ul>
+                    <li>Player statistics including points, rebounds, assists, and more.</li>
+                    <li>Team performance data including win/loss records, standings, and historical data.</li>
+                    <li>Data updated regularly to ensure accuracy and comprehensiveness.</li>
+                    <li>Easy-to-use endpoints for quick integration into your applications.</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>API Documentation</h2>
+                <p>Explore our API documentation to learn about available endpoints, request formats, and examples. Integrate the NBA Stats API into your application to unlock a world of basketball data.</p>
+                <a href="/docs" class="cta-button">View API Documentation</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 NBA Stats API. All rights reserved.
+    </div>
+</body>
+</html>
