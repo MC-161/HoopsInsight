@@ -37,6 +37,7 @@ module.exports = {
       colors: {
         primary: {
           main: '#FFFFFF',
+          alt: '#999999',
           gradient_purple: '#999999',
           gradient_yellow: '#CCCCCC',
           gradient_blue: '#00FFD1',
@@ -52,8 +53,14 @@ module.exports = {
           alt2: '#FFFFFF',
         },
       },
+      boxShadow: {
+        'glow': '0 0 20px rgba(255, 255, 255, 0.75)', // Custom orange glow shadow
+      },
       backgroundImage: theme => ({
         'custom-radial': 'radial-gradient(circle at 10% 20%, rgb(69, 86, 102) 0%, rgb(34, 34, 34) 90%)',
+        'nav-search': 'url(/assets/Nav/navbg.png)',
+        'AI-Chat': 'url(/assets/Nav/botpress.webp)',
+        'AI-Compare': 'url(/assets/Nav/CompareLogo.png)',
       }),
       borderRadius: {
         // Define border radius values if needed
