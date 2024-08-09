@@ -1,7 +1,9 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {Navbar} from './components/Navbar/Navbar'
 import Home from "./pages/Home/Home";
-
+import Legal from "./pages/Legal/Legal";
+import PrivacyPolicy from "./pages/Legal/Privacy";
+import TermsOfService from "./pages/Legal/Terms";
 
 function App() {
   return (
@@ -11,6 +13,10 @@ function App() {
         <Navbar></Navbar>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+
           {/*
           <Route path="/search/player-stats" element={<PlayerSearch />} />
           <Route path="/search/team-stats" element={<TeamSearch />} />
