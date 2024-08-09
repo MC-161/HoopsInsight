@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {Navbar} from './components/Navbar/Navbar'
+import Home from "./pages/Home/Home";
+import Legal from "./pages/Legal/Legal";
+import PrivacyPolicy from "./pages/Legal/Privacy";
+import TermsOfService from "./pages/Legal/Terms";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="main-content h-screen">
+        {/* Add class for spacing */}
+        <Navbar></Navbar>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/legal" element={<Legal />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+
+          {/*
+          <Route path="/search/player-stats" element={<PlayerSearch />} />
+          <Route path="/search/team-stats" element={<TeamSearch />} />
+          <Route path="/tools/comparison" element={<ComparisonTool />} />
+          <Route path="/tools/chatbot" element={<ChatBot />} />
+          <Route path="/contact/form" element={<Contact />} />
+          <Route path="/contact/support" element={<Contact />} /> */}
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
