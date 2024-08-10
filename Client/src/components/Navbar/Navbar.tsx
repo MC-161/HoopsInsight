@@ -16,6 +16,7 @@ import BRLOGO from "@/assets/Nav/BR.png";
 import { Drawer, IconButton, List} from "@mui/material";
 import { Menu as MenuIcon } from "lucide-react";
 import ListItemWithLink from "@/pages/utils/ListItemWithLink"
+import { useNavigate } from "react-router-dom";
 
 // Lazy load components to improve initial load time
 const Option = lazy(() => import("./Option"));
@@ -24,6 +25,7 @@ const LogoItem = lazy(() => import("./LogoItem"));
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate()
 
   const toggleDrawer =
     (open: boolean) => (event: MouseEvent | KeyboardEvent) => {
@@ -77,7 +79,7 @@ export function Navbar() {
       <NavigationMenu className="absolute top-2 border-2 rounded-md backdrop-blur-md">
         <NavigationMenuList>
           <div className="flex justify-between items-center w-96 md:w-auto">
-            <div className="flex items-center text-primary-main pr-4 pl-4">
+            <div onClick={() => navigate("/")} className="flex items-center text-primary-main pr-4 pl-4 cursor-pointer">
               <img className="h-14" src={logo} alt="NBA Logo" />
               <p className="text-sm font-bold">NBA STATS</p>
             </div>
