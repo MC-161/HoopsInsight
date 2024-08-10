@@ -13,8 +13,9 @@ import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined
 import NBALOGO from "@/assets/Nav/NbaLogo.png";
 import ESPNLOGO from "@/assets/Nav/Espn.png";
 import BRLOGO from "@/assets/Nav/BR.png";
-import { Drawer, IconButton, List, ListItem } from "@mui/material";
+import { Drawer, IconButton, List} from "@mui/material";
 import { Menu as MenuIcon } from "lucide-react";
+import ListItemWithLink from "@/pages/utils/ListItemWithLink"
 
 // Lazy load components to improve initial load time
 const Option = lazy(() => import("./Option"));
@@ -48,33 +49,24 @@ export function Navbar() {
           <div className="border-2 rounded-md w-96 flex justify-center bg-nav-search">
             <img className="w-32" src={logo} alt="Logo" />
           </div>
-          <ListItem
-            button
-            className="flex flex-col justify-center items-center p-4 transition-transform transform hover:scale-105"
-          >
-            <div className="flex items-center gap-5">
-              <Search fontSize="large" />
-              <p className="text-xl font-semibold">Search</p>
-            </div>
-          </ListItem>
-          <ListItem
-            button
-            className="flex flex-col justify-center items-center p-4 transition-transform transform hover:scale-105"
-          >
-            <div className="flex items-center gap-5">
-              <Build fontSize="large" />
-              <p className="text-xl font-semibold">Tools</p>
-            </div>
-          </ListItem>
-          <ListItem
-            button
-            className="flex flex-col justify-center items-center p-4 transition-transform transform hover:scale-105"
-          >
-            <div className="flex items-center gap-5">
-              <Link fontSize="large" />
-              <p className="text-xl font-semibold">External</p>
-            </div>
-          </ListItem>
+          <ListItemWithLink
+            to="/search"
+            icon={<Search fontSize="large" />}
+            primaryText="Search"
+            className="flex flex-col justify-center items-center"
+          />
+          <ListItemWithLink
+            to="/tools"
+            icon={<Build fontSize="large" />}
+            primaryText="Tools"
+            className="flex flex-col justify-center items-center"
+          />
+          <ListItemWithLink
+            to="/external"
+            icon={<Link fontSize="large" />}
+            primaryText="External"
+            className="flex flex-col justify-center items-center"
+          />
         </List>
       </div>
     </div>
@@ -108,6 +100,7 @@ export function Navbar() {
                       icon={PersonOutlineOutlinedIcon}
                       title="Player Search"
                       description="Find Players"
+                      destination="/search/player"
                     />
                     <Option
                       icon={PersonOutlineOutlinedIcon}
