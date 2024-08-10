@@ -5,6 +5,7 @@ export interface OptionProps {
   icon: SvgIconComponent;
   title: string;
   description: string;
+  destination?:string
 }
 
 // Define props for NavItem component

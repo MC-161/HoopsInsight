@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import Legal from "./pages/Legal/Legal";
 import PrivacyPolicy from "./pages/Legal/Privacy";
 import TermsOfService from "./pages/Legal/Terms";
+import PlayerSearch from "@/pages/PlayerSearch/PlayerSearch";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
           <Route path="/legal" element={<Legal />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfService />} />
+          <Route path="/search/player" element={<PlayerSearch />} />
+          <Route path="/playerDash/:id" element={<TermsOfService />} />
 
           {/*
-          <Route path="/search/player-stats" element={<PlayerSearch />} />
           <Route path="/search/team-stats" element={<TeamSearch />} />
           <Route path="/tools/comparison" element={<ComparisonTool />} />
           <Route path="/tools/chatbot" element={<ChatBot />} />
