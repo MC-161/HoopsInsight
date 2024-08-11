@@ -1,12 +1,12 @@
 import SearchPageContent from "@/pages/PlayerSearch/components/PlayerSearchContent"
 import Loader from "@/pages/utils/LoadingPage"
-import useAllPlayers from '@/hooks/useAllPlayers';
+import useAll from '@/hooks/useAll';
 
 const PlayerSearch = () => {
-  const { isLoading } = useAllPlayers(); // Fetch the loading state directly
+  const { isLoading } = useAll('players'); // Fetch the loading state directly
 
   return (
-    <div className="Search h-full">
+    <div className="Searchbg h-screen">
        {isLoading ? <Loader /> : <SearchPageContent />}
     </div>
   );

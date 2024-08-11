@@ -105,6 +105,7 @@ export function Navbar() {
                       destination="/search/player"
                     />
                     <Option
+                      destination="/search/team"
                       icon={PersonOutlineOutlinedIcon}
                       title="Team Search"
                       description="Find Teams"

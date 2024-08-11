@@ -17,6 +17,13 @@
   background-attachment: fixed; /* Fixes the background image in place */
   background-position:center;
 }
+.Searchbg{
+  background-image: url('./assets/Search/Search.webp');
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Fixes the background image in place */
+  background-position:center;
+}
 
 
 
