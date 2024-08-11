@@ -11,7 +11,7 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player }) => {
   return (
     <motion.div
       key={player._id}
-      className="backdrop-blur-md p-10 h-32 border-2 flex items-center justify-center rounded-md transition-all duration-300 hover:cursor-pointer"
+      className="backdrop-blur-md p-10 h-28 border-2 flex items-center justify-center rounded-md transition-all duration-300 hover:cursor-pointer"
       initial={{scale:1}}
       whileHover={{
         scale:1.05,

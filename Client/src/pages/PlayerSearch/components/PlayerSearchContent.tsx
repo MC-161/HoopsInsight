@@ -1,7 +1,7 @@
 import { useState, useEffect, KeyboardEvent } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button'; 
-import useAllPlayers from '@/hooks/useAllPlayers';
+import useAll from '@/hooks/useAll';
 import { Player } from '@/types/Search/SearchTypes'; 
 import useResponsivePagination from '@/hooks/ResPagination';
 import PlayerCard from './PlayerCard';
@@ -12,7 +12,7 @@ const PlayerSearchContent = () => {
   const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([]);
 
   const playersPerPage = useResponsivePagination();
-  const { data, isLoading, error } = useAllPlayers();
+  const { data, isLoading, error } = useAll('players'); 
 
   useEffect(() => {
     // Log the data to check if it is being fetched properly
@@ -69,13 +69,13 @@ const PlayerSearchContent = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
             onKeyDown={handleKeyDown} // Add keyDown event handler
           />
-          <Button type="button" onClick={handleSearch}>
+          <Button className='border-2' type="button" onClick={handleSearch}>
             Search
           </Button>
         </div>
       </section>
 
-      <section className="results mt-4 w-11/12 text-primary-main rounded-md">
+      <section className="results mt-8 p-42 w-11/12 text-primary-main rounded-md">
         {isLoading && <p>Loading...</p>}
         {error && <p className="text-red-500">Error: {error.message}</p>}
         {!isLoading && !error && (

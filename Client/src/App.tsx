@@ -9,6 +9,8 @@ import { checkApiStatus } from "./pages/utils/checkApiStatus";
 import Loader from "./pages/utils/LoadingPage";
 import { useState, useEffect} from "react";
 import PlayerDash from "./pages/PlayerDash/PlayerDash";
+import TeamSearch from "./pages/TeamSearch/TeamSearch";
+import TeamDash from "./pages/TeamDash/TeamDash";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,6 +50,8 @@ const App: React.FC = () => {
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/search/player" element={<PlayerSearch />} />
             <Route path="/player-dash" element={<PlayerDash/>} />
+            <Route path="/search/team" element={<TeamSearch />} />
+            <Route path="/team-dash" element={<TeamDash/>} />
             {/*
             <Route path="/search/team-stats" element={<TeamSearch />} />
             <Route path="/tools/comparison" element={<ComparisonTool />} />
