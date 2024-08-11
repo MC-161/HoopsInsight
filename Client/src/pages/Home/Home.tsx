@@ -7,32 +7,10 @@ import LightBar from "@/components/Lightbar";
 import UltimateNBACompanion from "@/pages/Home/components/UltCompanion";
 import Footer from "@/components/Footer/Footer";
 import Dash1 from "@/assets/Landing/dash.png"
-import { useEffect } from "react";
-import useAssetsLoading from "@/hooks/useAssetLoading";
-
-const assets = [
-  { src: Dash1 },
-  { src: NBALOGO },
-  { src: BRLOGO },
-  { src: ESPNLOGO }
-];
-
-
-interface HomeProps {
-  onLoad: () => void;
-}
 
 
 
-const Home: React.FC<HomeProps> = ({ onLoad }) => {
-  const assetsLoaded = useAssetsLoading(assets);
-
-  useEffect(() => {
-    if (assetsLoaded) {
-      onLoad(); // Notify parent component when all assets are loaded
-    }
-  }, [assetsLoaded, onLoad]);
-
+const Home= () => {
   return (
     <div className="h-screen">
       <Landing></Landing>

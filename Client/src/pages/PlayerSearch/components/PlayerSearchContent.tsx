@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Input } from '@/components/ui/input'; // Ensure this path is correct
-import { Button } from '@/components/ui/button'; // Ensure this path is correct
+import { useState, useEffect, KeyboardEvent } from 'react';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button'; 
 import useAllPlayers from '@/hooks/useAllPlayers';
+import { Player } from '@/types/Search/SearchTypes'; 
+import useResponsivePagination from '@/hooks/ResPagination';
+import PlayerCard from './PlayerCard';
 
 const PlayerSearchContent = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [playersPerPage] = useState(20); // Number of players to display per page
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([]);
 
+  const playersPerPage = useResponsivePagination();
   const { data, isLoading, error } = useAllPlayers();
 
   useEffect(() => {
@@ -17,10 +21,28 @@ const PlayerSearchContent = () => {
     console.log('Error:', error);
   }, [data, isLoading, error]);
 
-  // Filter players based on the search term
-  const filteredPlayers = data?.filter(player =>
-    player.name.toLowerCase().includes(searchTerm.toLowerCase())
-  ) || [];
+  useEffect(() => {
+    // Reset search results when data changes
+    if (data) {
+      setFilteredPlayers(data);
+    }
+  }, [data]);
+
+  // Function to handle the search
+  const handleSearch = () => {
+    const results = data?.filter(player =>
+      player.name.toLowerCase().includes(searchTerm.toLowerCase())
+    ) || [];
+    setFilteredPlayers(results);
+    setCurrentPage(1); // Reset to the first page of results
+  };
+
+  // Function to handle Enter key press
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   // Pagination logic
   const indexOfLastPlayer = currentPage * playersPerPage;
@@ -45,8 +67,9 @@ const PlayerSearchContent = () => {
             placeholder="Enter Player Name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            onKeyDown={handleKeyDown} // Add keyDown event handler
           />
-          <Button type="button" onClick={() => {/* Handle search if needed */}}>
+          <Button type="button" onClick={handleSearch}>
             Search
           </Button>
         </div>
@@ -57,12 +80,10 @@ const PlayerSearchContent = () => {
         {error && <p className="text-red-500">Error: {error.message}</p>}
         {!isLoading && !error && (
           <div>
-            <ul className='grid grid-cols-5 gap-2'>
+            <ul className='grid grid-cols-2 md:grid-cols-5 gap-2'>
               {currentPlayers.length > 0 ? (
                 currentPlayers.map(player => (
-                  <div key={player._id} className=" backdrop-blur-md p-10 h-32 border-2 text-center">
-                    {player.name}
-                  </div>
+                  <PlayerCard key={player._id} player={player} />
                 ))
               ) : (
                 <p>No players available</p>
@@ -95,4 +116,3 @@ const PlayerSearchContent = () => {
 };
 
 export default PlayerSearchContent;
-

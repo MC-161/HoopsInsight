@@ -8,6 +8,6 @@ export const checkApiStatus = async (url: string): Promise<boolean> => {
     } catch (error) {
       console.error('API check failed:', error);
     }
-    await new Promise(resolve => setTimeout(resolve, 5000)); // Wait 5 seconds before retrying
+    await new Promise(resolve => setTimeout(resolve, 10000)); // Wait 10 seconds before retrying
   }
 };
