@@ -4,9 +4,14 @@ import { defineConfig } from "vite"
 
 export default defineConfig({
   plugins: [react()],
+  define: {
+    'process.env': {
+      VITE_API_URL: process.env.VITE_API_URL,
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
+  }, 
 })

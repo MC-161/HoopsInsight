@@ -38,8 +38,8 @@ module.exports = {
         primary: {
           main: '#FFFFFF',
           alt: '#999999',
-          gradient_purple: '#999999',
-          gradient_yellow: '#CCCCCC',
+          gradient_purple: '#FC5DFF',
+          gradient_yellow: '#E7FA0F',
           gradient_blue: '#00FFD1',
           logo:"#FF8A00"
         },

@@ -7,7 +7,10 @@ import LightBar from "@/components/Lightbar";
 import UltimateNBACompanion from "@/pages/Home/components/UltCompanion";
 import Footer from "@/components/Footer/Footer";
 import Dash1 from "@/assets/Landing/dash.png"
-const Home = () => {
+
+
+
+const Home= () => {
   return (
     <div className="h-screen">
       <Landing></Landing>

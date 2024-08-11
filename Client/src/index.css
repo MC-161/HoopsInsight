@@ -10,6 +10,13 @@
   background-attachment: fixed; /* Fixes the background image in place */
   background-position:center;
 }
+.Search{
+  background-image: url('./assets/Search/SearchBg.png');
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Fixes the background image in place */
+  background-position:center;
+}
 
 
 
