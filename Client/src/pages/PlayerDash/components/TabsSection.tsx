@@ -1,5 +1,6 @@
 // components/TabsSection.jsx
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Overview from "./Overview";
 
 const TabsSection = () => (
   <section className="tabs flex items-center">
@@ -10,8 +11,8 @@ const TabsSection = () => (
         <TabsTrigger value="seasonStats">Season Stats</TabsTrigger>
         <TabsTrigger value="careerStats">Career Stats</TabsTrigger>
       </TabsList>
-      <div className="tabs-content p-4">
-        <TabsContent value="overview">Overview Content</TabsContent>
+      <div className="tabs-content bg-black">
+        <TabsContent value="overview"><Overview/></TabsContent>
         <TabsContent value="matches">Matches Content</TabsContent>
         <TabsContent value="seasonStats">Season Stats Content</TabsContent>
         <TabsContent value="careerStats">Career Stats Content</TabsContent>
