@@ -7,7 +7,7 @@ interface WidgetWrapperProps {
 
 const WidgetWrapper:React.FC<WidgetWrapperProps> = ({className, children}) =>  {
   return (
-    <div className={`bg-background-alt shadow-sm shadow-zinc-200 rounded-md p-4 ${className}`}>{children}</div>
+    <div className={`bg-background-alt rounded-md  ${className}`}>{children}</div>
   )
 }
 

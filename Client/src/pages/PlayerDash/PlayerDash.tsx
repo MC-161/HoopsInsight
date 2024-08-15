@@ -16,7 +16,7 @@ const PlayerDash = () => {
           src="https://cdn.nba.com/headshots/nba/latest/1040x760/2730.png"
           alt=""
         />
-        <div>
+        <div className="">
           <TabsSection/>
         </div>
       </section>

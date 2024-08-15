@@ -51,6 +51,8 @@ module.exports = {
           default: '#000000',
           alt: '#212121',
           alt2: '#FFFFFF',
+          dash: "#101010",
+          dashalt:'#2F2F2F',
         },
       },
       boxShadow: {
