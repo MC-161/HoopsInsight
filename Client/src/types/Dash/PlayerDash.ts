@@ -1,4 +1,4 @@
-interface PlayerStats {
+export interface PlayerStats {
   year: number;
   age: number;
   tm: string;
@@ -29,7 +29,7 @@ interface PlayerStats {
   pts: number;
 }
 
-interface PlayerInfo {
+export interface PlayerInfo {
   espnID: string;
   espnName: string;
   sleeperBotID: string;
@@ -84,7 +84,9 @@ export interface Player {
 
 
 export interface metricOptionProps {
-  metricName: string;
-  metric: string | number;
+  metricName?: string;
+  metric?: string | number;
   className?: string;
+  Img?: string;
+  Link?: string;
 }

@@ -1,7 +1,7 @@
 import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
-import MetricOption from "../components/MetricOption";
-import HeadingSection from "../components/HeadingSection";
+import MetricOption from "@/pages/PlayerDash/Overview/components/MetricOption";
+import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
 
 const PlayerInfo = [
   {

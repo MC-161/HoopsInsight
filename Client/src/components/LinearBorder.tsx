@@ -2,11 +2,12 @@ import React from "react";
 
 
 interface linearprops{
-  children: React.ReactNode
+  children: React.ReactNode;
+  className?:string;
 }
-const LinearBorder:React.FC<linearprops> = ({children}) => {
+const LinearBorder:React.FC<linearprops> = ({children, className}) => {
   return (
-    <div className="relative rounded-sm">
+    <div className={`relative rounded-sm ${className}`}>
       <div
         className="absolute -inset-px bg-gradient-to-r from-yellow-400 to-pink-400 rounded-sm"
         aria-hidden="true"

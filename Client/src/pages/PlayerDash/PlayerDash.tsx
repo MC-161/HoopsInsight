@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import TabsSection from "./components/TabsSection";
+import TabsSection from "./TabsSection";
 
 const PlayerDash = () => {
   const { search } = useLocation();

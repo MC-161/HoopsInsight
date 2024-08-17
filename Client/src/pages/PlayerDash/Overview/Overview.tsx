@@ -1,10 +1,10 @@
-import PlayerTeamWidget from "@/pages/PlayerDash/widgets/PlayerTeamWidget";
-import PlayerBioWidget from "@/pages/PlayerDash/widgets/PlayerBioWidget";
+import PlayerTeamWidget from "@/pages/PlayerDash/Overview/widgets/PlayerTeamWidget";
+import PlayerBioWidget from "@/pages/PlayerDash/Overview/widgets/PlayerBioWidget";
 import { Grid } from "@mui/material";
-import ToolsWidget from "@/pages/PlayerDash/widgets/ToolsWidget";
-import PlayerMatchWidget from "@/pages/PlayerDash/widgets//PlayerMatchWidget";
-import NewsCard from "@/pages/PlayerDash/widgets//NewsCard";
-import PlayerExtra from "../widgets/PlayerExtra";
+import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
+import PlayerMatchWidget from "@/pages/PlayerDash/Overview/widgets/PlayerMatchWidget";
+import NewsCard from "@/pages/PlayerDash/Overview/widgets/NewsCard";
+import PlayerExtra from "@/pages/PlayerDash/Overview/widgets/PlayerExtra";
 
 const Overview = () => {
   return (
