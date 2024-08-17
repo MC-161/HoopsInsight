@@ -9,7 +9,7 @@ const PlayerDash = () => {
   return (
     <div className="bg-black">
       <section className="banner w-full h-72 Searchbg"></section>
-      <section className="tabs_Wrapper grid grid-cols-1 relative h-32 w-full text-primary-main -mt-28">
+      <section className="tabs_Wrapper grid grid-cols-1 relative h-32 w-full text-primary-main -mt-20">
         <div className="placeholdn h-10"></div>
         <img
           className="w-32 absolute bottom-6 left-36 border-2 rounded-lg pt-3"

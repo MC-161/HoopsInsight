@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 import ToolsWidget from "@/pages/PlayerDash/widgets/ToolsWidget";
 import PlayerMatchWidget from "@/pages/PlayerDash/widgets//PlayerMatchWidget";
 import NewsCard from "@/pages/PlayerDash/widgets//NewsCard";
+import PlayerExtra from "../widgets/PlayerExtra";
 
 const Overview = () => {
   return (
@@ -16,7 +17,7 @@ const Overview = () => {
           <PlayerBioWidget />
         </Grid>
         <Grid item xs={12} md={4.7}>
-          <PlayerBioWidget />
+          <PlayerExtra/>
         </Grid>
         <Grid item xs={12} md={2.6}>
           <ToolsWidget />

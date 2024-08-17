@@ -81,3 +81,10 @@ export interface Player {
     body: PlayerInfo;
   };
 }
+
+
+export interface metricOptionProps {
+  metricName: string;
+  metric: string | number;
+  className?: string;
+}
