@@ -90,3 +90,35 @@ export interface metricOptionProps {
   Img?: string;
   Link?: string;
 }
+
+
+export interface PlayerGameStats {
+  blk: number;              // Number of blocks
+  OffReb: number;           // Number of offensive rebounds
+  ftp: number;              // Free throw percentage
+  DefReb: number;           // Number of defensive rebounds
+  plusMinus: string;        // Plus/minus statistic
+  stl: number;              // Number of steals
+  pts: number;              // Points scored
+  tech: number;             // Number of technical fouls
+  team: string;             // Team abbreviation
+  TOV: number;              // Turnovers
+  fga: number;              // Field goals attempted
+  ast: number;              // Assists
+  tptfgp: number;           // Three-point field goal percentage
+  teamAbv: string;          // Team abbreviation
+  mins: number;             // Minutes played
+  fgm: number;              // Field goals made
+  fgp: number;              // Field goal percentage
+  reb: number;              // Total rebounds (offensive + defensive)
+  teamID: string;           // Team ID
+  tptfgm: number;           // Three-point field goals made
+  fta: number;              // Free throws attempted
+  tptfga: number;           // Three-point field goals attempted
+  longName: string;         // Player's full name
+  PF: number;               // Personal fouls
+  playerID: string;         // Player ID
+  ftm: number;              // Free throws made
+  gameID: string;           // Game ID
+  fantasyPoints: number;    // Fantasy points
+}

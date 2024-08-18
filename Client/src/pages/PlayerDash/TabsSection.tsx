@@ -2,6 +2,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Overview from "./Overview/Overview";
 import { useState } from "react";
+import Footer from "@/components/Footer/Footer";
 
 const TabsSection = () => {
   // Define the type of selectedTab as a string literal union
@@ -13,15 +14,15 @@ const TabsSection = () => {
   };
 
   return (
-    <section className="tabs flex items-center">
+    <section className="tabs flex flex-col">
       <Tabs
         className="bg-background-alt w-full h-16"
         value={selectedTab}
         onValueChange={handleTabsChange}
       >
-        <div className="md:hidden mb-4">
+        <div className="lg:hidden mb-4">
           <select
-            className="w-32 mt-3 border rounded-md p-2 bg-background-alt text-white"
+            className="w-32 mt-3 border rounded-md p-2 ml-4 bg-background-alt text-white"
             value={selectedTab}
             onChange={(e) => setSelectedTab(e.target.value as "overview" | "matches" | "seasonStats" | "careerStats")}
           >
@@ -31,7 +32,7 @@ const TabsSection = () => {
             <option value="careerStats">Career Stats</option>
           </select>
         </div>
-        <TabsList className="h-full ml-72 hidden md:block">
+        <TabsList className="h-full ml-72 hidden lg:block">
           <TabsTrigger
             value="overview"
             className={`tab-item ${selectedTab === "overview" ? "active" : ""}`}
@@ -64,6 +65,7 @@ const TabsSection = () => {
         <div className="tabs-content bg-background-dash">
           <TabsContent value="overview">
             <Overview />
+            <Footer/>
           </TabsContent>
           <TabsContent value="matches">Matches Content</TabsContent>
           <TabsContent value="seasonStats">Season Stats Content</TabsContent>

@@ -40,8 +40,10 @@ module.exports = {
           alt: '#999999',
           gradient_purple: '#FC5DFF',
           gradient_yellow: '#E7FA0F',
-          gradient_blue: '#00FFD1',
-          logo:"#FF8A00"
+          gradient_blue: '#71FFE3',
+          blue:'#00FFD1',
+          logo:"#FF8A00",
+          green:"#00FF94"
         },
         res: {
           pos: '#00FF1A',

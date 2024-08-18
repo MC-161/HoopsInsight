@@ -8,7 +8,7 @@ import PlayerExtra from "@/pages/PlayerDash/Overview/widgets/PlayerExtra";
 
 const Overview = () => {
   return (
-      <Grid container columnSpacing={4} padding={2} className="gap-y-4 sm:gap-y-8 md:gap-y-0">
+      <Grid container columnSpacing={4} padding={2} className="gap-y-4 sm:gap-y-8 md:gap-y-4 lg:gap-y-1">
         {/* Left Column */}
         <Grid item xs={12} md={2.6}>
           <PlayerTeamWidget />
@@ -27,9 +27,8 @@ const Overview = () => {
         </Grid>
         <Grid item xs={12} md={2.6} paddingTop={3}>
         </Grid>
-        <Grid item xs={12} md={9.4} paddingTop={3}>
-          <div className=" w-full flex gap-10 pt-5">
-            <NewsCard/>
+        <Grid item xs={12} md={9.4}>
+          <div className="w-full  grid grid-cols-4 gap-6 lg:grid-cols-4 lg:mt-4">
             <NewsCard/>
             <NewsCard/>
             <NewsCard/>
