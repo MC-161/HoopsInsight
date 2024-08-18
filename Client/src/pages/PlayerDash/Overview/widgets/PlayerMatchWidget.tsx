@@ -4,7 +4,7 @@ import OverTable from "@/pages/PlayerDash/Overview/components/Overtable";
 import GamePerformance from "@/pages/PlayerDash/Overview/components/PlayerTable";
 const PlayerMatchWidget = () => {
   return (
-    <WidgetWrapper className="shadow-sm shadow-background-alt2 md: lg:h-[620px]">
+    <WidgetWrapper className="shadow-md shadow-white md: lg:h-[620px]">
       <TableHeader/>
       <OverTable></OverTable>
       <GamePerformance></GamePerformance>

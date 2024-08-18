@@ -7,7 +7,7 @@ import yahoo from "@/assets/dash/yahoo.png";
 import fantasy from "@/assets/dash/fantasypro.png"
 const PlayerExtra = () => {
   return (
-    <WidgetWrapper className=" h-56 ">
+    <WidgetWrapper className=" h-56 shadow-sm shadow-white ">
       <div className="flex gap-2">
         <HeadingSection title="Jersey" className="pl-14 md:pl-24 tracking-[0.2em]"/>
         <HeadingSection title="Links" className="pl-14 md:pl-24 tracking-[0.2em]"/>

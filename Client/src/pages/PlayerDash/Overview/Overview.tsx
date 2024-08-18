@@ -28,7 +28,8 @@ const Overview = () => {
         <Grid item xs={12} md={2.6} paddingTop={3}>
         </Grid>
         <Grid item xs={12} md={9.4}>
-          <div className="w-full  grid grid-cols-4 gap-6 lg:grid-cols-4 lg:mt-4">
+          <p className="lg:pt-2 text-lg font-bold">News</p>
+          <div className="w-full  grid grid-cols-2 gap-6 lg:grid-cols-4 lg:mt-4">
             <NewsCard/>
             <NewsCard/>
             <NewsCard/>

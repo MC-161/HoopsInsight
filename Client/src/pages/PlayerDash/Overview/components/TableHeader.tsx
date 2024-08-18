@@ -15,7 +15,7 @@ const TableHeader: React.FC = ({
       <section className="flex flex-col title">
         <div className="maintitle flex items-center gap-2 px-2">
           <AccountTreeOutlinedIcon />
-          <p className="title font-semibold text-xl">Player Match Perfomance</p>
+          <p className="title font-semibold lg:text-xl">Player Match Perfomance</p>
         </div>
         <p className="self-start text-xs px-10">Current Season</p>
       </section>

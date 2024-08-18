@@ -15,14 +15,10 @@ const OverTable: React.FC = () => {
         </div>
       </div>
       
-      <section className="fpp grid grid-cols-8 gap-2">
+      <section className="fpp grid grid-cols-3 lg:grid-cols-8 gap-2">
         <FantasyPointsCard points={55} date="2024/02/08" />
         <FantasyPointsCard points={55} date="2024/02/08" />
-        <FantasyPointsCard points={55} date="2024/02/08" />
-        <FantasyPointsCard points={55} date="2024/02/08" />
-        <FantasyPointsCard points={55} date="2024/02/08" />
-        <FantasyPointsCard points={55} date="2024/02/08" />
-        <FantasyPointsCard points={55} date="2024/02/08" />
+       
       </section>
     </section>
   );

@@ -16,7 +16,7 @@ const PlayerInfo = [
 
 const PlayerBioWidget = () => {
   return (
-    <WidgetWrapper className=" h-56 ">
+    <WidgetWrapper className=" h-56 shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Bio"/>
       <section className="keyMetrics">
         <div className="grid grid-cols-3 pt-3 px-3 gap-4">
