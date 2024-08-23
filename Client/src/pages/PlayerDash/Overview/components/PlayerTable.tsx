@@ -3,7 +3,12 @@ import { Button } from "@/components/ui/button"
 import DataTable  from '@/pages/PlayerDash/Overview/components/games/DataTable'; 
 import { PlayerGameStats } from '@/types/Dash/PlayerDash';
 import {columns} from '@/pages/PlayerDash/Overview/components/games/columns'
-const GamePerformance: React.FC = () => {
+
+interface GamePerformanceProps {
+  changeTabToMatches: () => void;
+}
+
+const GamePerformance: React.FC<GamePerformanceProps> = ({ changeTabToMatches }) => {
   const gameData: PlayerGameStats[] = [
     // Example data
     {
@@ -162,7 +167,7 @@ const GamePerformance: React.FC = () => {
   return (
     <div className=" flex flex-col gap-3">
       <DataTable data={gameData} columns={columns}/>
-      <Button variant="outline" className="self-center w-3/4 bg-transparent  text-gray-100 border-white hover:border-2 mb-3">
+      <Button  onClick={changeTabToMatches} variant="outline" className="self-center w-3/4 bg-transparent text-gray-100 border-white hover:border-2 mb-3">
         View All Matches
       </Button>
     </div>

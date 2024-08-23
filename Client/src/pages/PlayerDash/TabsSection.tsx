@@ -1,16 +1,22 @@
-// components/TabsSection.tsx
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Overview from "./Overview/Overview";
 import { useState } from "react";
 import Footer from "@/components/Footer/Footer";
+import Matches from "./Matches/Matches";
 
-const TabsSection = () => {
-  // Define the type of selectedTab as a string literal union
-  const [selectedTab, setSelectedTab] = useState<"overview" | "matches" | "seasonStats" | "careerStats">("overview");
+const TabsSection: React.FC = () => {
+  const [selectedTab, setSelectedTab] = useState<
+    "overview" | "matches" | "seasonStats" | "careerStats"
+  >("overview");
 
-  // Explicitly type the value parameter as string
   const handleTabsChange = (value: string) => {
-    setSelectedTab(value as "overview" | "matches" | "seasonStats" | "careerStats");
+    setSelectedTab(
+      value as "overview" | "matches" | "seasonStats" | "careerStats"
+    );
+  };
+
+  const changeToMatchesTab = () => {
+    setSelectedTab("matches");
   };
 
   return (
@@ -24,7 +30,11 @@ const TabsSection = () => {
           <select
             className="w-32 mt-3 border rounded-md p-2 ml-4 bg-background-alt text-white"
             value={selectedTab}
-            onChange={(e) => setSelectedTab(e.target.value as "overview" | "matches" | "seasonStats" | "careerStats")}
+            onChange={(e) =>
+              setSelectedTab(
+                e.target.value as "overview" | "matches" | "seasonStats" | "careerStats"
+              )
+            }
           >
             <option value="overview">Overview</option>
             <option value="matches">Matches</option>
@@ -64,10 +74,13 @@ const TabsSection = () => {
         </TabsList>
         <div className="tabs-content bg-background-dash">
           <TabsContent value="overview">
-            <Overview />
-            <Footer/>
+            <Overview changeTabToMatches={changeToMatchesTab} />
+            <Footer />
           </TabsContent>
-          <TabsContent value="matches">Matches Content</TabsContent>
+          <TabsContent value="matches">
+            <Matches />
+            <Footer />
+          </TabsContent>
           <TabsContent value="seasonStats">Season Stats Content</TabsContent>
           <TabsContent value="careerStats">Career Stats Content</TabsContent>
         </div>

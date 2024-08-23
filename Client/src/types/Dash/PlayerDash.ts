@@ -122,3 +122,20 @@ export interface PlayerGameStats {
   gameID: string;           // Game ID
   fantasyPoints: number;    // Fantasy points
 }
+
+
+export interface RowData {
+  id: string;
+  matchup: string;
+  date: string;
+  mins: number;
+  plusMinus: number;
+  pts: number;
+  ast: number;
+  reb: number;
+  fgp: string;
+  tpp: string;
+  tov: number;
+  steals: number;
+  fantasyPoints: number;
+}
