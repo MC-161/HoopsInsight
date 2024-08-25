@@ -3,6 +3,7 @@ import Overview from "./Overview/Overview";
 import { useState } from "react";
 import Footer from "@/components/Footer/Footer";
 import Matches from "./Matches/Matches";
+import Season from "./SeasonStats/Season";
 
 const TabsSection: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<
@@ -81,7 +82,7 @@ const TabsSection: React.FC = () => {
             <Matches />
             <Footer />
           </TabsContent>
-          <TabsContent value="seasonStats">Season Stats Content</TabsContent>
+          <TabsContent value="seasonStats"><Season changeTabToMatches={changeToMatchesTab}/></TabsContent>
           <TabsContent value="careerStats">Career Stats Content</TabsContent>
         </div>
       </Tabs>
