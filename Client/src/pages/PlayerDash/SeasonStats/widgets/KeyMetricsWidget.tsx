@@ -5,14 +5,14 @@ import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSectio
 
 const PlayerInfo = [
   {
-    postion: "PG",
-    height: "6-1",
-    birth: "7/11/1978",
-    weight: "175",
-    exp: "15",
-    college: "Wake Forest",
-    asd: "15",
-    dsa: "Wake Forest",
+    pts: "321",
+    reb: "233",
+    ast: "123",
+    stl: "122",
+    blk: "432",
+    "fg%": "54",
+    "3p%": "60",
+    "ft%": "75 Forest",
   },
 ];
 

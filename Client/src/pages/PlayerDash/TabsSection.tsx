@@ -4,6 +4,7 @@ import { useState } from "react";
 import Footer from "@/components/Footer/Footer";
 import Matches from "./Matches/Matches";
 import Season from "./SeasonStats/Season";
+import Career from "./CareerStats/Career";
 
 const TabsSection: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<
@@ -33,7 +34,11 @@ const TabsSection: React.FC = () => {
             value={selectedTab}
             onChange={(e) =>
               setSelectedTab(
-                e.target.value as "overview" | "matches" | "seasonStats" | "careerStats"
+                e.target.value as
+                  | "overview"
+                  | "matches"
+                  | "seasonStats"
+                  | "careerStats"
               )
             }
           >
@@ -60,14 +65,18 @@ const TabsSection: React.FC = () => {
           </TabsTrigger>
           <TabsTrigger
             value="seasonStats"
-            className={`tab-item ${selectedTab === "seasonStats" ? "active" : ""}`}
+            className={`tab-item ${
+              selectedTab === "seasonStats" ? "active" : ""
+            }`}
             onClick={() => handleTabsChange("seasonStats")}
           >
             Season Stats
           </TabsTrigger>
           <TabsTrigger
             value="careerStats"
-            className={`tab-item ${selectedTab === "careerStats" ? "active" : ""}`}
+            className={`tab-item ${
+              selectedTab === "careerStats" ? "active" : ""
+            }`}
             onClick={() => handleTabsChange("careerStats")}
           >
             Career Stats
@@ -82,8 +91,13 @@ const TabsSection: React.FC = () => {
             <Matches />
             <Footer />
           </TabsContent>
-          <TabsContent value="seasonStats"><Season changeTabToMatches={changeToMatchesTab}/></TabsContent>
-          <TabsContent value="careerStats">Career Stats Content</TabsContent>
+          <TabsContent value="seasonStats">
+            <Season changeTabToMatches={changeToMatchesTab} />
+            <Footer />
+          </TabsContent>
+          <TabsContent value="careerStats">
+            <Career /> <Footer />
+          </TabsContent>
         </div>
       </Tabs>
     </section>
