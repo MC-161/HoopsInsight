@@ -8,9 +8,10 @@ import PlayerExtra from "@/pages/PlayerDash/Overview/widgets/PlayerExtra";
 
 interface OverviewProps {
   changeTabToMatches: () => void;
+  playerData: any;
 }
 
-const Overview: React.FC<OverviewProps> = ({ changeTabToMatches }) => {
+const Overview: React.FC<OverviewProps> = ({ changeTabToMatches, playerData}) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid container columnSpacing={4} padding={2} className="gap-y-4 sm:gap-y-8 md:gap-y-4 lg:gap-y-1 max-w-screen-2xl">

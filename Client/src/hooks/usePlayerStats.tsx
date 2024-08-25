@@ -7,6 +7,7 @@ const fetchPlayerData = async (playerId: string): Promise<Player> => {
   try {
     const apiUrl = import.meta.env.VITE_BASE_URL;
     const response = await axios.get(`${apiUrl}/players/${playerId}`);
+    console.log(response.data)
     return response.data;
   } catch (error) {
     console.error("Error fetching player:", error);

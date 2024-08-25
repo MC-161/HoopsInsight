@@ -9,9 +9,10 @@ import PlayerMatchWidget from "@/pages/PlayerDash/Overview/widgets/PlayerMatchWi
 
 interface SeasonProps {
   changeTabToMatches: () => void;
+  playerData: any;
 }
 
-const Season: React.FC<SeasonProps> = ({ changeTabToMatches }) => {
+const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData}) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid
