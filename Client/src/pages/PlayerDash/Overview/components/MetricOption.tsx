@@ -7,7 +7,7 @@ const MetricOption: React.FC<metricOptionProps> = ({
   metric,
   className,
   Img,
-  Link,
+  link,
 }) => {
   return (
     <LinearBorder className={className}>
@@ -15,7 +15,7 @@ const MetricOption: React.FC<metricOptionProps> = ({
         className={`item border-2 flex flex-col items-center gap-2 py-2 rounded-md z-10 ${className}`}
       >
         {Img ? (
-          <a className="z-10" href={Link} target="blank">
+          <a className="z-10" href={link} target="blank">
             <img
               src={Img}
               alt={`${metricName ? metricName : "metric"} image`}
@@ -31,7 +31,7 @@ const MetricOption: React.FC<metricOptionProps> = ({
                     metricName.slice(1).toLowerCase()}
                 </p>
                 <p className="text-sm z-10 font-bold text-primary-gradient_yellow">
-                  {metric}
+                  {metricName.includes('%') ? `${metric}%`: metric }
                 </p>
               </>
             )}

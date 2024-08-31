@@ -1,29 +1,22 @@
 import React from 'react';
 import { Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, Title, Tooltip, Legend, RadialLinearScale, Filler, PointElement, LineElement } from 'chart.js';
+import { OPStats } from '@/types/Dash/PlayerDash';
 // Register ChartJS components
 ChartJS.register(Title, Tooltip, Legend, RadialLinearScale, Filler, PointElement, LineElement);
 
-interface RadarChartProps {}
+interface RadarChartProps {
+  OPStats: OPStats
+}
 
-const RadarChart: React.FC<RadarChartProps> = () => {
-  const stats = {
-    "PTS": 3.9,
-    "AST": 63.5,
-    "REB": 63.4,
-    "STL": 58.3,
-    "BLK": 60.6,
-    "FG%": 54.8,
-    "3P%": 58.7,
-    "FT%": 73.4
-  };
 
-  // Player stats
+const RadarChart: React.FC<RadarChartProps> = ({OPStats}) => {
+
+
   const data = {
     labels: ["PTS", "AST", "REB", "STL", "BLK", "FG%", "3P%", "FT%"],
     datasets: [
       {
-        color: '#ffffff',
         label: 'Player Stats',
         backgroundColor: "rgba(0, 246, 255, 0.09)",
         borderColor: "rgba(0, 246, 255, 1)",
@@ -31,7 +24,8 @@ const RadarChart: React.FC<RadarChartProps> = () => {
         pointBorderColor: "#fff",
         pointHoverBackgroundColor: "#fff",
         pointHoverBorderColor: "rgba(0, 246, 255, 1)",
-        data: Object.values(stats)
+        data: Object.values(OPStats),
+        fill: true,
       }
     ]
   };
@@ -45,8 +39,17 @@ const RadarChart: React.FC<RadarChartProps> = () => {
         text: "Player Performance Radar Chart",
         color: "rgba(0, 246, 255, 1)",
         font: {
-          size: 14 // Use a number for font size, not a string
+          size: 14
         },
+      },
+      tooltip: {
+        callbacks: {
+          label: function(context: any) {
+            const label = context.dataset.label || '';
+            const value = context.raw.toFixed(0); // Adjust to 0 decimal places for whole numbers
+            return `${label}: ${value}`;
+          }
+        }
       },
       legend: {
         display: false
@@ -54,15 +57,25 @@ const RadarChart: React.FC<RadarChartProps> = () => {
     },
     scales: {
       r: {
+        min: 0,
+        max: 100, // Set scale range from 0 to 100
         ticks: {
-          precision: 0,
+          precision: 0, // Whole numbers
           backdropColor: "transparent",
+          color: 'rgba(255, 255, 255, 0.7)',
+          showLabelBackdrop: false,
         },
         pointLabels: {
-          color: 'rgba(0, 246, 255, 1)'
+          color: 'rgba(0, 246, 255, 1)',
+          font: {
+            size: 12,
+          },
         },
         grid: {
-          color: "rgba(255, 255, 255, 0.1)"
+          color: "rgba(255, 255, 255, 0.2)"
+        },
+        angleLines: {
+          color: "rgba(255, 255, 255, 0.3)"
         }
       },
     }

@@ -2,21 +2,25 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import MetricOption from "@/pages/PlayerDash/Overview/components/MetricOption";
 import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
+import { PlayerData } from "@/types/Dash/PlayerDash";
 
-const PlayerInfo = [
-  {
-    pts: "321",
-    reb: "233",
-    ast: "123",
-    stl: "122",
-    blk: "432",
-    "fg%": "54",
-    "3p%": "60",
-    "ft%": "75 Forest",
-  },
-];
+interface KeyMetricsProps{
+  playerData: PlayerData
+}
 
-const KeyMetrics = () => {
+const KeyMetrics:React.FC<KeyMetricsProps> = ({playerData}) => {
+  const PlayerInfo = [
+    {
+      pts: playerData.playerStats.stats[new Date().getFullYear()].pts,
+      reb: playerData.playerStats.stats[new Date().getFullYear()].drb,
+      ast: playerData.playerStats.stats[new Date().getFullYear()].ast,
+      stl: playerData.playerStats.stats[new Date().getFullYear()].stl,
+      blk: playerData.playerStats.stats[new Date().getFullYear()].blk,
+      "fg%": playerData.playerStats.stats[new Date().getFullYear()].fg_pct * 100,
+      "3p%": playerData.playerStats.stats[new Date().getFullYear()]["3p_pct"] * 100,
+      "ft%": playerData.playerStats.stats[new Date().getFullYear()].ft_pct * 100,
+    },
+  ];  
   return (
     <WidgetWrapper className=" h-72 shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Bio"/>

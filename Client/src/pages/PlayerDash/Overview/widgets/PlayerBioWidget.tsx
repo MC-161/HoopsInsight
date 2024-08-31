@@ -2,19 +2,23 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import MetricOption from "@/pages/PlayerDash/Overview/components/MetricOption";
 import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
+import { PlayerData } from "@/types/Dash/PlayerDash";
 
-const PlayerInfo = [
-  {
-    postion: "PG",
-    height: "6-1",
-    birth: "7/11/1978",
-    weight: "175",
-    exp: "15",
-    college: "Wake Forest",
-  },
-];
+interface BioProps {
+  playerData: PlayerData
+}
 
-const PlayerBioWidget = () => {
+const PlayerBioWidget:React.FC<BioProps> = ({playerData}) => {
+  const PlayerInfo = [
+    {
+      postion: playerData.playerImgBio.body.pos,
+      height: playerData.playerImgBio.body.height,
+      birth: playerData.playerImgBio.body.bDay,
+      weight: playerData.playerImgBio.body.weight,
+      exp: playerData.playerImgBio.body.exp,
+      college: playerData.playerImgBio.body.college || "No College",
+    },
+  ];
   return (
     <WidgetWrapper className=" h-56 shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Bio"/>

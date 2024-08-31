@@ -88,7 +88,7 @@ export interface metricOptionProps {
   metric?: string | number;
   className?: string;
   Img?: string;
-  Link?: string;
+  link?: string;
 }
 
 
@@ -138,4 +138,180 @@ export interface RowData {
   tov: number;
   steals: number;
   fantasyPoints: number;
+}
+
+
+
+interface PlayerStatss {
+  _id: string;
+  name: string;
+  stats: Record<string, YearlyStats>;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+interface YearlyStats {
+  year: number;
+  age: number;
+  tm: string;
+  g: number;
+  gs: number;
+  mp: number;
+  fg: number;
+  fga: number;
+  fg_pct: number;
+  "3p": number;
+  "3pa": number;
+  "3p_pct": number;
+  "2p": number;
+  "2pa": number;
+  "2p_pct": number;
+  efg_pct: number;
+  ft: number;
+  fta: number;
+  ft_pct: number;
+  orb: number;
+  drb: number;
+  trb: number;
+  ast: number;
+  stl: number;
+  blk: number;
+  tov: number;
+  pf: number;
+  pts: number;
+}
+
+interface PlayerImgBio {
+  statusCode: number;
+  body: PlayerBioBody;
+}
+
+interface PlayerBioBody {
+  espnID: string;
+  espnName: string;
+  sleeperBotID: string;
+  fantasyProsPlayerID: string;
+  nbaComName: string;
+  college: string;
+  weight: string;
+  nbaComHeadshot: string;
+  jerseyNum: string;
+  team: string;
+  yahooPlayerID: string;
+  espnLink: string;
+  yahooLink: string;
+  bDay: string;
+  espnHeadshot: string;
+  nbaComID: string;
+  shortName: string;
+  rotoWirePlayerIDFull: string;
+  nbaComLink: string;
+  injury: Injury;
+  teamID: string;
+  bRefName: string;
+  pos: string;
+  cbsPlayerID: string;
+  longName: string;
+  rotoWirePlayerID: string;
+  height: string;
+  bRefID: string;
+  lastGamePlayed: string;
+  playerID: string;
+  exp: string;
+  fantasyProsLink: string;
+  stats: PlayerBioStats;
+}
+
+interface Injury {
+  injReturnDate: string;
+  description: string;
+  injDate: string;
+  designation: string;
+}
+
+interface PlayerBioStats {
+  blk: string;
+  fga: string;
+  DefReb: string;
+  ast: string;
+  ftp: string;
+  tptfgp: string;
+  tptfgm: string;
+  stl: string;
+  fgm: string;
+  pts: string;
+  reb: string;
+  fgp: string;
+  fta: string;
+  mins: string;
+  trueShootingAttempts: string;
+  gamesPlayed: string;
+  TOV: string;
+  tptfga: string;
+  OffReb: string;
+  ftm: string;
+}
+
+export interface PlayerData {
+  playerStats: PlayerStatss;
+  playerImgBio: PlayerImgBio;
+}
+
+
+export interface TeamInfo {
+  _id: string,
+  name: string,
+  logo: string,
+  conference: string,
+}
+
+
+// Define an interface for individual game stats
+interface GameStats {
+  blk: string;
+  OffReb: string;
+  ftp: string;
+  DefReb: string;
+  plusMinus: string;
+  stl: string;
+  pts: string;
+  tech: string;
+  team: string;
+  TOV: string;
+  fga: string;
+  ast: string;
+  tptfgp: string;
+  teamAbv: string;
+  mins: string;
+  fgm: string;
+  fgp: string;
+  reb: string;
+  teamID: string;
+  tptfgm: string;
+  fta: string;
+  tptfga: string;
+  longName: string;
+  PF: string;
+  playerID: string;
+  ftm: string;
+  gameID: string;
+  fantasyPoints: string;
+}
+
+// Define an interface for the entire dataset
+export interface PlayerGameData {
+  [gameID: string]: GameStats;
+}
+
+// Overall Perfomance Stats
+export interface OPStats{
+  PTS: number,
+  AST: number,
+  REB: number,
+  STL: number,
+  BLK: number,
+  "FG%": number,
+  "3P%": number,
+  "FT%": number
 }

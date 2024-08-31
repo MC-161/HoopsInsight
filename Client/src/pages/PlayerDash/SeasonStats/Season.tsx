@@ -6,12 +6,14 @@ import KeyMetrics from "@/pages/PlayerDash/SeasonStats/widgets/KeyMetricsWidget"
 import OverallPerformance from "@/pages/PlayerDash/SeasonStats/widgets/OverallPerformanceWidget";
 import ChartsWidget from "@/pages/PlayerDash/SeasonStats/widgets/ChartsWidget";
 import PlayerMatchWidget from "@/pages/PlayerDash/Overview/widgets/PlayerMatchWidget";
+import { PlayerData } from "@/types/Dash/PlayerDash";
 
 interface SeasonProps {
   changeTabToMatches: () => void;
+  playerData: PlayerData
 }
 
-const Season: React.FC<SeasonProps> = ({ changeTabToMatches }) => {
+const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData }) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid
@@ -22,16 +24,16 @@ const Season: React.FC<SeasonProps> = ({ changeTabToMatches }) => {
       >
         {/* Left Column */}
         <Grid item xs={12} md={2.6 as any}>
-          <PlayerTeamWidget />
+          <PlayerTeamWidget playerData={playerData}/>
         </Grid>
         <Grid item xs={12} md={5}>
-          <KeyMetrics />
+          <KeyMetrics playerData={playerData} />
         </Grid>
         <Grid item xs={12} md={2.3 as any}>
-          <OverallPerformance />
+          <OverallPerformance playerData={playerData} />
         </Grid>
         <Grid item xs={12} md={2.1 as any}>
-          <OverallPerformance />
+          <OverallPerformance playerData={playerData}/>
         </Grid>
         <Grid item xs={12} md={2.6 as any} sx={{
             marginTop: {
@@ -47,7 +49,7 @@ const Season: React.FC<SeasonProps> = ({ changeTabToMatches }) => {
         <Grid item xs={12} md={2.6} paddingTop={3}>
         </Grid>
         <Grid item xs={12} md={9.4} paddingTop={3}>
-          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} />
+          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} playerData={playerData} />
         </Grid>
       </Grid>
     </div>
