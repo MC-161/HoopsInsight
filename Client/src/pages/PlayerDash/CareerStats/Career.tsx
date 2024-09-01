@@ -6,8 +6,16 @@ import KeyMetrics from "@/pages/PlayerDash/SeasonStats/widgets/KeyMetricsWidget"
 import OverallPerformance from "@/pages/PlayerDash/CareerStats/widgets/OverallPerformanceWidget";
 import ChartsWidget from "@/pages/PlayerDash/CareerStats/widgets/ChartsWidget";
 import Breakdown from "@/pages/PlayerDash/CareerStats/widgets/Breakdown";
-import { TraditionalSplitsTable } from "./widgets/OverallTable";
-const Career: React.FC = () => {
+import TraditionalSplitsTable  from "./widgets/OverallTable";
+import { PlayerData } from "@/types/Dash/PlayerDash";
+
+interface CareerProps{
+  playerData: PlayerData
+}
+
+
+
+const Career: React.FC<CareerProps> = ({playerData}) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid
@@ -18,16 +26,16 @@ const Career: React.FC = () => {
       >
         {/* Left Column */}
         <Grid item xs={12} md={2.6 as any}>
-          <PlayerTeamWidget />
+          <PlayerTeamWidget playerData={playerData}/>
         </Grid>
         <Grid item xs={12} md={5}>
-          <KeyMetrics />
+          <KeyMetrics playerData={playerData} />
         </Grid>
         <Grid item xs={12} md={2.3 as any}>
-          <Breakdown />
+          <Breakdown playerData={playerData} />
         </Grid>
         <Grid item xs={12} md={2.1 as any}>
-          <OverallPerformance />
+          <OverallPerformance playerData={playerData} />
         </Grid>
         <Grid
           item
@@ -44,8 +52,8 @@ const Career: React.FC = () => {
         </Grid>
         <Grid item xs={12} md={9.4 as any} sx={{ paddingTop: 3 }}>
           <div className="flex flex-col gap-8">
-            <ChartsWidget />
-            <TraditionalSplitsTable />
+            <ChartsWidget playerData={playerData} />
+            <TraditionalSplitsTable playerData={playerData}/>
           </div>
         </Grid>
       </Grid>

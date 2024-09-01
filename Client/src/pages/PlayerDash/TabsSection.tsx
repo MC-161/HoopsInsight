@@ -101,7 +101,7 @@ const TabsSection: React.FC<TabsSectionProps> = ({playerData}) => {
             <Footer />
           </TabsContent>
           <TabsContent value="careerStats">
-            <Career /> <Footer />
+            <Career playerData={playerData} /> <Footer />
           </TabsContent>
         </div>
       </Tabs>
