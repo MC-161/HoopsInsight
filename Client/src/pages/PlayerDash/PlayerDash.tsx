@@ -987,6 +987,7 @@ const PlayerDash = () => {
   // Use a default headshot if none is provided
   const headshotUrl = playerData.playerImgBio?.body?.nbaComHeadshot ||
     "";
+        
   return (
     <div className="bg-black">
       <section className="banner w-full h-72 Searchbg"></section>

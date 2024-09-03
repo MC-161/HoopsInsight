@@ -15,6 +15,7 @@ interface SeasonProps {
 }
 
 const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData, gameData}) => {
+     
   return (
     <div className="flex justify-center pb-8">
       <Grid

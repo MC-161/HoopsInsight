@@ -6,7 +6,6 @@ import Matches from "./Matches/Matches";
 import Season from "./SeasonStats/Season";
 import Career from "./CareerStats/Career";
 
-
 interface TabsSectionProps{
   playerData: any,
   gameData: any,
