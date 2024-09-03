@@ -1,24 +1,39 @@
 import WidgetWrapper from "@/components/Widget/WidgetWrapper";
+import useTeamInfo from "@/hooks/useTeamInfo";
 import { PlayerData } from "@/types/Dash/PlayerDash";
 
 // useTeam Info to be used
-const TeamInfo = {
-  _id: "ATL",
-  name: "Atlanta Hawks",
-  logo: "https://cdn.nba.com/teams/uploads/sites/1610612737/2023/01/atl_hawks_primary_icon.svg",
-  conference: "Eastern Conference"
-}
 interface PlayerTeamProps{
   playerData: PlayerData
 }
 const PlayerTeamWidget:React.FC<PlayerTeamProps>= ({playerData}) => {
-  const teamName = TeamInfo.name
-  const teamImg = TeamInfo.logo
-  const teamAbv = TeamInfo._id
+  const stats = playerData.playerStats.stats[0]
+  // Get all the years from the keys of the stats object
+  const years = Object.keys(stats).map(year => Number(year));
+  // Find the latest year
+  const latestYear = Math.max(...years);
+  const latestYearStr:string = latestYear.toString();
+  const teamAbv = playerData.playerStats.stats[0][latestYearStr].tm
+  const { data, error, isLoading } = useTeamInfo(teamAbv);
+  
+  const teamName = data?.name
+  const teamImg = data?.logo
   const injury = playerData.playerImgBio.body.injury;
   const isInjured = injury && Object.values(injury).some(injuryItem => 
     injuryItem.injReturnDate === null || injuryItem.injReturnDate === ""
   );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data) {
+    return <div>No data found</div>;
+  }
 
   return (
     <WidgetWrapper className="h-48 w-full shadow-sm shadow-zinc-50">

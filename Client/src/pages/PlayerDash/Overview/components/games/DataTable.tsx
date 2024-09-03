@@ -6,14 +6,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
 import {
   ColumnDef,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -24,22 +22,31 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  // Create table instance
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
+
+  // Check if data is empty
+  const isEmpty = data.length === 0;
+
   return (
     <div className="">
-      <Table className="">
-        <TableHeader>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow
-              className="hover:bg-transparent bg-background-dashalt"
-              key={headerGroup.id}
-            >
-              {headerGroup.headers.map((header) => {
-                return (
+      {isEmpty ? (
+        <div className="h-24 text-center text-gray-600">
+          No results available.
+        </div>
+      ) : (
+        <Table className="">
+          <TableHeader>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow
+                className="hover:bg-transparent bg-background-dashalt"
+                key={headerGroup.id}
+              >
+                {headerGroup.headers.map((header) => (
                   <TableHead
                     className="text-primary-main text-center font-bold text-sm"
                     key={header.id}
@@ -51,15 +58,13 @@ export function DataTable<TData, TValue>({
                           header.getContext()
                         )}
                   </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row, index) => {
-              return (
+                ))}
+              </TableRow>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row, index) => (
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
@@ -71,7 +76,7 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => {
                     let cellStyle = "text-sm font-semibold text-center";
-                    if (cell.column.id == "plusMinus") {
+                    if (cell.column.id === "plusMinus") {
                       const plusMinusValue = cell.getValue() as string;
                       const plusMinusColor =
                         plusMinusValue[0] === "-"
@@ -102,75 +107,19 @@ export function DataTable<TData, TValue>({
                     );
                   })}
                 </TableRow>
-              );
-            })
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={columns.length} className="h-24 text-center">
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      )}
     </div>
   );
 }
 
 export default DataTable;
-
-// <TableRow className="hover:bg-transparent bg-background-dashalt">
-// <TableHead className="text-left text-primary-main font-bold text-xs uppercase">Match Up</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">MINS</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">Plus Minus</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">PTS</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">AST</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">REB</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">FPG</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">TPP</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">TOV</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">Steals</TableHead>
-// <TableHead className="text-primary-main text-center font-bold text-xs uppercase">Fantasy Points</TableHead>
-// </TableRow>
-
-// {data.map((game, index) => {
-//   const [team1, team2] = getTeamsFromGameID(game.gameID);
-//   const plusMinusColor = game.plusMinus[0] == '-' ? 'text-res-neg' : 'text-primary-green';
-//   return (
-//     <TableRow key={game.gameID} className={index % 2 === 0 ? "bg-background-alt" : "bg-background-dashalt"}>
-//       <TableCell className="font-semibold text-center Matchup">
-//         {`${team1} vs ${team2}`}
-//       </TableCell>
-//       <TableCell className="font-semibold text-center Mins">
-//         {game.mins}
-//       </TableCell>
-//       <TableCell className={`font-semibold text-center plusMinus ${plusMinusColor}`}>
-//         {game.plusMinus}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold points`}>
-//         {game.pts}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold assists`}>
-//         {game.ast}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold rebounds`}>
-//         {game.reb}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold fpg`}>
-//         {`${game.fgp}%`}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold tpp`}>
-//         {`${game.tptfgp}%`}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold tov`}>
-//         {`${game.TOV}%`}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold stls`}>
-//         {`${game.stl}`}
-//       </TableCell>
-//       <TableCell className={`text-center font-semibold fantsp`}>
-//         {`${game.fantasyPoints}`}
-//       </TableCell>
-//     </TableRow>
-//   )
-// })}

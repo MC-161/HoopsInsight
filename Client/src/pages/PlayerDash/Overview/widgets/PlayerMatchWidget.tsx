@@ -13,10 +13,10 @@ interface PlayerMatchWidgetProps {
 
 const PlayerMatchWidget: React.FC<PlayerMatchWidgetProps> = ({ changeTabToMatches, playerData, gameData }) => {
   return (
-    <WidgetWrapper className="shadow-md shadow-white lg:h-[640px]">
+    <WidgetWrapper className="shadow-md shadow-white lg:min-h-[500px]">
       <TableHeader/>
       <OverTable gameData={gameData} playerData={playerData}/>
-      <GamePerformance changeTabToMatches={changeTabToMatches} />
+      <GamePerformance changeTabToMatches={changeTabToMatches} gameData={gameData} />
     </WidgetWrapper>
   );
 };

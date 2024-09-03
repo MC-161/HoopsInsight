@@ -24,6 +24,13 @@
   background-attachment: fixed; /* Fixes the background image in place */
   background-position:center;
 }
+.internalBg{
+  background-image: url('./assets/404bg.webp');
+  background-size: cover; /* Ensures the image covers the entire background */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Fixes the background image in place */
+  background-position:center;
+}
 
 
 

@@ -23,7 +23,7 @@ const fetchGameData = async (playerId: string): Promise<PlayerGameData[]> => {
     return response.data.body;
   } catch (error) {
     console.error("Error fetching game data:", error);
-    throw new Error("Failed to fetch game data");
+    return []
   }
 };
 

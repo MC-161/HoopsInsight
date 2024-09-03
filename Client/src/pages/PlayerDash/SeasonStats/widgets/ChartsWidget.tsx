@@ -14,6 +14,7 @@ interface ChartsWidgetProps{
 }
 
 const ChartsWidget:React.FC<ChartsWidgetProps> = ({gameData}) => {
+  const isEmpty = Object.keys(gameData).length === 0
   // Extract labels (game IDs) and data points (points scored) from dummyData
   const labels = Object.keys(gameData).map((_, index) => `G${index + 1}`);
   const dataPoints = Object.values(gameData).map(game => parseInt(game.pts, 10));
@@ -39,7 +40,7 @@ const ChartsWidget:React.FC<ChartsWidgetProps> = ({gameData}) => {
   return (
     <WidgetWrapper className="h-full shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Player Analysis"/>
-      <section className="Chart h-[90%] grid grid-cols-1 lg:grid-cols-3 gap-2 pt-4 px-3 py-5">
+      {!isEmpty ? <section className="Chart h-[90%] grid grid-cols-1 lg:grid-cols-3 gap-2 pt-4 px-3 py-5">
         <div><ScoringAverages labels={labels} dataPoints={scoringAverages} /></div>
         <div><EfficiencyContent efficiency={efficiency}/></div>
         <div><DefensiveBarChart labels={labels} turnoversData={turnOverdataPoints} reboundsData={DefensivedataPoints}/></div>
@@ -47,7 +48,7 @@ const ChartsWidget:React.FC<ChartsWidgetProps> = ({gameData}) => {
           <div className="col-span-2"><LineChart labels={labels} dataPoints={dataPoints} /></div>
           <div className="col-span-2"><TurnoversReboundsChart turnoversData={turnOverdataPoints} reboundsData={DefensivedataPoints} labels={labels}/></div>
         </div>
-      </section>
+      </section> : <div className="w-full h-96 flex items-center justify-center text-primary-alt">Sorry No Game Data</div>}
     </WidgetWrapper>
   );
 };

@@ -25,7 +25,7 @@ const KeyMetrics:React.FC<KeyMetricsProps> = ({playerData}) => {
   ];  
   return (
     <WidgetWrapper className=" h-72 shadow-sm shadow-white ">
-      <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Bio"/>
+      <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Key Metrics"/>
       <section className="keyMetrics h-[80%] flex flex-col justify-center">
         <div className="grid grid-cols-4 pt-3 px-3 gap-4">
           {PlayerInfo.map((player, index) =>

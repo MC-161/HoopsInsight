@@ -22,14 +22,14 @@ const KeyMetrics:React.FC<KeyMetricsProps> = ({playerData}) => {
       ast: stats[latestYearStr].ast,
       stl: stats[latestYearStr].stl,
       blk: stats[latestYearStr].blk,
-      "fg%": stats[latestYearStr].fg_pct * 100,
-      "3p%": stats[latestYearStr]["3p_pct"] * 100,
-      "ft%": stats[latestYearStr].ft_pct * 100,
+      "fg%": Math.ceil(stats[latestYearStr].fg_pct * 100),
+      "3p%": Math.ceil(stats[latestYearStr]["3p_pct"] * 100),
+      "ft%": Math.ceil(stats[latestYearStr].ft_pct * 100),
     },
   ];  
   return (
     <WidgetWrapper className=" h-72 shadow-sm shadow-white ">
-      <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Bio"/>
+      <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Key Metrics"/>
       <section className="keyMetrics h-[80%] flex flex-col justify-center">
         <div className="grid grid-cols-4 pt-3 px-3 gap-4">
           {PlayerInfo.map((player, index) =>

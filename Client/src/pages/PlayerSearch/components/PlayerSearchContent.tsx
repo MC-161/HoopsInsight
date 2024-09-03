@@ -15,13 +15,6 @@ const PlayerSearchContent = () => {
   const { data, isLoading, error } = useAll('players'); 
 
   useEffect(() => {
-    // Log the data to check if it is being fetched properly
-    console.log('Data:', data);
-    console.log('Is Loading:', isLoading);
-    console.log('Error:', error);
-  }, [data, isLoading, error]);
-
-  useEffect(() => {
     // Reset search results when data changes
     if (data) {
       setFilteredPlayers(data);
