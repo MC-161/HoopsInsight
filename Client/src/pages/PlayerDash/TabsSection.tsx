@@ -6,11 +6,12 @@ import Matches from "./Matches/Matches";
 import Season from "./SeasonStats/Season";
 import Career from "./CareerStats/Career";
 
-interface TabsSectionProps {
-  playerData: any; // Replace `any` with the actual type if you have one
+interface TabsSectionProps{
+  playerData: any,
+  gameData: any,
 }
 
-const TabsSection: React.FC<TabsSectionProps> = ({playerData}) => {
+const TabsSection: React.FC<TabsSectionProps> = ({playerData, gameData}) => {
   const [selectedTab, setSelectedTab] = useState<
     "overview" | "matches" | "seasonStats" | "careerStats"
   >("overview");
@@ -88,19 +89,19 @@ const TabsSection: React.FC<TabsSectionProps> = ({playerData}) => {
         </TabsList>
         <div className="tabs-content bg-background-dash">
           <TabsContent value="overview">
-            <Overview changeTabToMatches={changeToMatchesTab} playerData={playerData} />
+            <Overview changeTabToMatches={changeToMatchesTab} playerData={playerData} gameData={gameData} />
             <Footer />
           </TabsContent>
           <TabsContent value="matches">
-            <Matches />
+            <Matches playerData={playerData} gameData={gameData}/>
             <Footer />
           </TabsContent>
           <TabsContent value="seasonStats">
-            <Season changeTabToMatches={changeToMatchesTab} playerData={playerData} />
+            <Season changeTabToMatches={changeToMatchesTab} playerData={playerData} gameData={gameData} />
             <Footer />
           </TabsContent>
           <TabsContent value="careerStats">
-            <Career /> <Footer />
+            <Career playerData={playerData} /> <Footer />
           </TabsContent>
         </div>
       </Tabs>

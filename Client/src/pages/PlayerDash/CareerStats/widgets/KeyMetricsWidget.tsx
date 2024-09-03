@@ -2,29 +2,25 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import MetricOption from "@/pages/PlayerDash/Overview/components/MetricOption";
 import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
-import { PlayerData } from "@/types/Dash/PlayerDash";
+import { getTotalStats, PlayerData } from "@/types/Dash/PlayerDash";
 
 interface KeyMetricsProps{
   playerData: PlayerData
 }
 
 const KeyMetrics:React.FC<KeyMetricsProps> = ({playerData}) => {
-  const stats = playerData.playerStats.stats[0]
-  // Get all the years from the keys of the stats object
-  const years = Object.keys(stats).map(year => Number(year));
-  // Find the latest year
-  const latestYear = Math.max(...years);
-  const latestYearStr:string = latestYear.toString();
+  const totals = getTotalStats(playerData.playerStats)
+  
   const PlayerInfo = [
     {
-      pts: stats[latestYearStr].pts,
-      reb: stats[latestYearStr].drb,
-      ast: stats[latestYearStr].ast,
-      stl: stats[latestYearStr].stl,
-      blk: stats[latestYearStr].blk,
-      "fg%": Math.ceil(stats[latestYearStr].fg_pct * 100),
-      "3p%": Math.ceil(stats[latestYearStr]["3p_pct"] * 100),
-      "ft%": Math.ceil(stats[latestYearStr].ft_pct * 100),
+      pts: totals.totalPoints,
+      reb: totals.totalAssists,
+      ast: totals.totalRebounds,
+      stl: totals.totalSteals,
+      blk: totals.totalBlocks,
+      fg: totals.totalFieldGoals,
+      "3p": totals.totalThreePointers,
+      ft: totals.totalFreeThrows,
     },
   ];  
   return (

@@ -7,7 +7,8 @@ const fetchData = async (type: 'players' | 'teams'): Promise<Player[] | Team[]> 
   try {
     const apiUrl = import.meta.env.VITE_BASE_URL
     const response = await axios.get(`${apiUrl}/${type}`);
-    return response.data; 
+    const reversedData = Array.isArray(response.data) ? response.data.reverse() : response.data;
+    return reversedData 
   } catch (error) {
     console.error("Error fetching players:", error);
     throw new Error("Failed to fetch players");

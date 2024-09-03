@@ -5,15 +5,14 @@ import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement
 // Register the necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const TurnoversReboundsChart: React.FC = () => {
+interface TurnoversReboundsChartProps{
+  turnoversData: number[]
+  reboundsData: number[]
+  labels: string[]
+}
+
+const TurnoversReboundsChart: React.FC<TurnoversReboundsChartProps> = ({turnoversData, reboundsData, labels}) => {
   // Labels for each game or time period
-  const labels = ['g1', 'g2', 'g3', 'g4', 'g5', 'g6', 'g7', 'g8', 'g9', 'g10'];
-
-  // Dummy data for turnovers and rebounds
-  const turnoversData = [3, 5, 2, 6, 4, 7, 3, 4, 2, 5];
-  const reboundsData = [10, 12, 9, 14, 11, 15, 13, 12, 14, 16];
-
-  // Data configuration for the line chart
   const data = {
     labels,
     datasets: [

@@ -4,12 +4,13 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 
 // Register the necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+interface DefensiveBarChartProps{
+  turnoversData: number[]
+  reboundsData: number[]
+  labels: string[]
+}
 
-const DefensiveBarChart: React.FC = () => {
-  // Example data
-  const labels = ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'];
-  const turnoversData = [4, 3, 5, 2, 6];
-  const reboundsData = [12, 10, 14, 9, 11];
+const DefensiveBarChart: React.FC<DefensiveBarChartProps> = ({turnoversData, reboundsData, labels}) => {
 
   // Data configuration for the bar chart
   const data = {

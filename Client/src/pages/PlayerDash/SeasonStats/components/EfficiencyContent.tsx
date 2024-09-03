@@ -1,6 +1,19 @@
 import GaugeComponent from "react-gauge-component";
 
-const EfficiencyContent = () => {
+interface EfficiencyContentProps {
+  efficiency: {
+    playerEF: string;
+    efg: string;
+    trueShoot: string;
+  };
+}
+
+const EfficiencyContent: React.FC<EfficiencyContentProps> = ({
+  efficiency,
+}) => {
+  const playerEF = parseFloat(efficiency.playerEF);
+  const efg = parseFloat(efficiency.efg);
+  const trueShoot = parseFloat(efficiency.trueShoot);
   return (
     <div className="efficiency rounded-sm px-4 z-20 [border-image:linear-gradient(to_top_right,#FC5DFF,#E7FA0F)_30] border-2 border-solid border-transparent">
       <section className="header text-center">
@@ -13,20 +26,20 @@ const EfficiencyContent = () => {
             <GaugeComponent
               type="semicircle"
               arc={{
-                colorArray: ["#00FF15", "#FF2121"],
+                colorArray: ["#FF2121", "#00FF15"],
                 padding: 0.02,
                 subArcs: [
-                  { limit: 40 },
-                  { limit: 60 },
-                  { limit: 70 },
-                  {},
-                  {},
-                  {},
-                  {},
+                  { limit: 10 }, // Below Average
+                  { limit: 15 }, // Average (lower bound)
+                  { limit: 20 }, // Average (upper bound)
+                  { limit: 25 }, // Good (lower bound)
+                  { limit: 30 }, // Good (upper bound)
+                  { limit: 35 }, // Excellent (lower bound)
+                  {}, // Excellent (upper bound, no specific limit)
                 ],
               }}
               pointer={{ type: "blob", animationDelay: 0 }}
-              value={50}
+              value={playerEF}
               className="z-10"
             />
           </div>
@@ -35,20 +48,19 @@ const EfficiencyContent = () => {
             <GaugeComponent
               type="semicircle"
               arc={{
-                colorArray: ["#00FF15", "#FF2121"],
+                colorArray: ["#FF2121", "#00FF15"],
                 padding: 0.02,
                 subArcs: [
-                  { limit: 40 },
-                  { limit: 60 },
-                  { limit: 70 },
-                  {},
-                  {},
-                  {},
-                  {},
+                  { limit: 40 }, // Below Average
+                  { limit: 45 }, // Average (lower bound)
+                  { limit: 50 }, // Average (upper bound)
+                  { limit: 55 }, // Good (lower bound)
+                  { limit: 60 }, // Good (upper bound)
+                  { limit: 65 }, // Excellent (lower bound)
                 ],
               }}
               pointer={{ type: "blob", animationDelay: 0 }}
-              value={50}
+              value={efg}
               className="z-10"
             />
           </div>
@@ -59,20 +71,19 @@ const EfficiencyContent = () => {
             <GaugeComponent
               type="semicircle"
               arc={{
-                colorArray: ["#00FF15", "#FF2121"],
+                colorArray: ["#FF2121", "#00FF15"],
                 padding: 0.02,
                 subArcs: [
-                  { limit: 40 },
-                  { limit: 60 },
-                  { limit: 70 },
-                  {},
-                  {},
-                  {},
-                  {},
+                  { limit: 40 },  // Below Average
+                  { limit: 45 },  // Average (lower bound)
+                  { limit: 50 },  // Average (upper bound)
+                  { limit: 55 },  // Good (lower bound)
+                  { limit: 60 },  // Good (upper bound)
+                  { limit: 65 },  // Excellent (lower bound)
                 ],
               }}
               pointer={{ type: "blob", animationDelay: 0 }}
-              value={50}
+              value={trueShoot}
             />
           </div>
         </section>

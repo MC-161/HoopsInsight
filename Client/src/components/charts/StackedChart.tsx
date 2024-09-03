@@ -5,12 +5,12 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 // Register the necessary Chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const ScoringAveragesBarChart: React.FC = () => {
-  // Labels for each game or category
-  const labels = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'G9', 'G10'];
+interface ScoringAveragesBarChartProps{
+  labels: string[]; // Array of strings representing game IDs
+  dataPoints: string[]; // Array of numbers representing points scored
+}
 
-  // Corresponding scoring averages (dummy data)
-  const dataPoints = [25, 30, 22, 28, 35, 20, 27, 40, 33, 29];
+const ScoringAveragesBarChart: React.FC<ScoringAveragesBarChartProps> = ({labels, dataPoints}) => {
 
   // Data configuration for the bar chart
   const data = {

@@ -11,14 +11,24 @@ import {
 // Register necessary components from Chart.js
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DoughnutChart: React.FC = () => {
+interface DoughnutChartProps{
+  pts:number,
+  ast:number,
+  reb:number,
+  fg:number,
+  threep:number,
+  ft:number,
+}
+
+
+const DoughnutChart: React.FC<DoughnutChartProps> = ({pts, ast, reb,fg, threep, ft}) => {
   // Data for Points, Assists, and Rebounds
   const primaryData = {
     labels: ["Points", "Assists", "Rebounds"],
     datasets: [
       {
         label: "Player Stats",
-        data: [24.9, 7.5, 7.4], // Example data for PTS, AST, REB
+        data: [pts, ast, reb], // Example data for PTS, AST, REB
         backgroundColor: [
           "rgba(75, 192, 192, 0.6)", // Color for Points
           "rgba(54, 162, 235, 0.6)", // Color for Assists
@@ -40,7 +50,7 @@ const DoughnutChart: React.FC = () => {
     datasets: [
       {
         label: "Efficiency Breakdown",
-        data: [51.8, 38.7, 73.4], // Example efficiency data
+        data: [fg, threep, ft], // Example efficiency data
         backgroundColor: [
           "rgba(153, 102, 255, 0.6)", // Color for FG%
           "rgba(255, 159, 64, 0.6)", // Color for 3P%

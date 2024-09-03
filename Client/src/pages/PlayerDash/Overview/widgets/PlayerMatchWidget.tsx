@@ -2,17 +2,21 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import TableHeader from "@/pages/PlayerDash/Overview/components/TableHeader";
 import OverTable from "@/pages/PlayerDash/Overview/components/Overtable";
 import GamePerformance from "@/pages/PlayerDash/Overview/components/PlayerTable";
+import { PlayerData } from "@/types/Dash/PlayerDash";
+import { PlayerGameData } from "@/types/Dash/PlayerDash";
 
 interface PlayerMatchWidgetProps {
-  changeTabToMatches: () => void;
+  changeTabToMatches: () => void,
+  playerData: PlayerData,
+  gameData: PlayerGameData
 }
 
-const PlayerMatchWidget: React.FC<PlayerMatchWidgetProps> = ({ changeTabToMatches }) => {
+const PlayerMatchWidget: React.FC<PlayerMatchWidgetProps> = ({ changeTabToMatches, playerData, gameData }) => {
   return (
-    <WidgetWrapper className="shadow-md shadow-white md: lg:h-[620px]">
+    <WidgetWrapper className="shadow-md shadow-white lg:min-h-[500px]">
       <TableHeader/>
-      <OverTable></OverTable>
-      <GamePerformance changeTabToMatches={changeTabToMatches} />
+      <OverTable gameData={gameData} playerData={playerData}/>
+      <GamePerformance changeTabToMatches={changeTabToMatches} gameData={gameData} />
     </WidgetWrapper>
   );
 };
