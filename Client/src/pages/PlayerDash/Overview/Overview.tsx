@@ -5,13 +5,15 @@ import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
 import PlayerMatchWidget from "@/pages/PlayerDash/Overview/widgets/PlayerMatchWidget";
 import NewsCard from "@/pages/PlayerDash/Overview/widgets/NewsCard";
 import PlayerExtra from "@/pages/PlayerDash/Overview/widgets/PlayerExtra";
+import { PlayerGameData } from "@/types/Dash/PlayerDash";
 
 interface OverviewProps {
   changeTabToMatches: () => void;
   playerData: any;
+  gameData: PlayerGameData,
 }
 
-const Overview: React.FC<OverviewProps> = ({ changeTabToMatches, playerData }) => {
+const Overview: React.FC<OverviewProps> = ({ changeTabToMatches, playerData, gameData}) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid container columnSpacing={4} padding={2} className="gap-y-4 sm:gap-y-8 md:gap-y-4 lg:gap-y-1 max-w-screen-2xl">
@@ -29,7 +31,7 @@ const Overview: React.FC<OverviewProps> = ({ changeTabToMatches, playerData }) =
           <ToolsWidget />
         </Grid>
         <Grid item xs={12} md={9.4} paddingTop={3}>
-          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} playerData={playerData} />
+          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} playerData={playerData} gameData={gameData} />
         </Grid>
         <Grid item xs={12} md={2.6} paddingTop={3}>
         </Grid>

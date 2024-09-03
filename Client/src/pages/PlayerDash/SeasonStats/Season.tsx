@@ -6,14 +6,15 @@ import KeyMetrics from "@/pages/PlayerDash/SeasonStats/widgets/KeyMetricsWidget"
 import OverallPerformance from "@/pages/PlayerDash/SeasonStats/widgets/OverallPerformanceWidget";
 import ChartsWidget from "@/pages/PlayerDash/SeasonStats/widgets/ChartsWidget";
 import PlayerMatchWidget from "@/pages/PlayerDash/Overview/widgets/PlayerMatchWidget";
-import { PlayerData } from "@/types/Dash/PlayerDash";
+import { PlayerData, PlayerGameData } from "@/types/Dash/PlayerDash";
 
 interface SeasonProps {
   changeTabToMatches: () => void;
-  playerData: PlayerData
+  playerData: PlayerData,
+  gameData: PlayerGameData,
 }
 
-const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData }) => {
+const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData, gameData}) => {
   return (
     <div className="flex justify-center pb-8">
       <Grid
@@ -44,12 +45,12 @@ const Season: React.FC<SeasonProps> = ({ changeTabToMatches, playerData }) => {
           <ToolsWidget />
         </Grid>
         <Grid item xs={12} md={9.4 as any} sx={{ paddingTop: 3 }}>
-          <ChartsWidget />
+          <ChartsWidget gameData={gameData} />
         </Grid>
         <Grid item xs={12} md={2.6} paddingTop={3}>
         </Grid>
         <Grid item xs={12} md={9.4} paddingTop={3}>
-          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} playerData={playerData} />
+          <PlayerMatchWidget changeTabToMatches={changeTabToMatches} playerData={playerData} gameData={gameData} />
         </Grid>
       </Grid>
     </div>

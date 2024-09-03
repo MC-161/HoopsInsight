@@ -2,21 +2,19 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
 import DoughnutChart from "../components/doughnut";
-import { PlayerData } from "@/types/Dash/PlayerDash";
-import { aggregateStats } from "@/pages/utils/aggregate";
-
+import { getTotalStats, PlayerData } from "@/types/Dash/PlayerDash";
 interface BreakdownProps {
   playerData: PlayerData
 }
 
 const Breakdown:React.FC<BreakdownProps> = ({playerData}) => {
-  const stats = aggregateStats(playerData.playerStats.stats);
-  const pts = stats.pts
-  const ast = stats.ast
-  const reb = stats.drb
-  const fg = stats.fg_pct
-  const threep = stats.threeP_pct
-  const ft = stats.ft_pct
+  const totals = getTotalStats(playerData.playerStats)
+  const pts = totals.totalPoints
+  const ast = totals.totalAssists
+  const reb = totals.totalRebounds
+  const fg = totals.totalFieldGoals
+  const threep = totals.totalThreePointers
+  const ft = totals.totalFreeThrows
   return (
     <WidgetWrapper className="h-72 shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Breakdown"/>

@@ -17,7 +17,7 @@ interface TraditonalSplitsProps{
 
 
 const TraditionalSplitsTable:React.FC<TraditonalSplitsProps> = ({playerData})  => {
-  const statsArray = Object.values(playerData.playerStats.stats);
+  const statsArray = Object.values(playerData.playerStats.stats[0]);
   return (
     <div>
       <HeadingSection className="ml-4" title="Traditonal Splits" />

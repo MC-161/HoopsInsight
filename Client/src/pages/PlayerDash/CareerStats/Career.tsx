@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@mui/material";
 import PlayerTeamWidget from "@/pages/PlayerDash/Overview/widgets/PlayerTeamWidget";
 import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
-import KeyMetrics from "@/pages/PlayerDash/SeasonStats/widgets/KeyMetricsWidget";
+import KeyMetrics from "@/pages/PlayerDash/CareerStats/widgets/KeyMetricsWidget";
 import OverallPerformance from "@/pages/PlayerDash/CareerStats/widgets/OverallPerformanceWidget";
 import ChartsWidget from "@/pages/PlayerDash/CareerStats/widgets/ChartsWidget";
 import Breakdown from "@/pages/PlayerDash/CareerStats/widgets/Breakdown";

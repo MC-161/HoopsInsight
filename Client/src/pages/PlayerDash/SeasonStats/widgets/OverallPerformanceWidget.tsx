@@ -19,22 +19,28 @@ function normalize(value: number, min: number, max: number): number {
 
 
 const OverallPerformance:React.FC<OverallPerformanceProps> = ({playerData}) => {
-  const currentYear = new Date().getFullYear();
-  const stats = {
-    "PTS": normalize(playerData.playerStats.stats[currentYear].pts, 0, 2500),
-    "AST": normalize(playerData.playerStats.stats[currentYear].ast, 0, 1000),
-    "REB": normalize(playerData.playerStats.stats[currentYear].drb, 0, 1000),
-    "STL": normalize(playerData.playerStats.stats[currentYear].stl, 0, 200),
-    "BLK": normalize(playerData.playerStats.stats[currentYear].blk, 0, 200),
-    "FG%": normalize(playerData.playerStats.stats[currentYear].fg_pct, 0, 1),
-    "3P%": normalize(playerData.playerStats.stats[currentYear]["3p_pct"], 0, 1),
-    "FT%": normalize(playerData.playerStats.stats[currentYear].ft_pct, 0, 1),
+  const stats = playerData.playerStats.stats[0];
+
+  // Get all the years from the keys of the stats object
+  const years = Object.keys(stats).map(year => Number(year));
+  // Find the latest year
+  const latestYear = Math.max(...years);
+  const latestYearStr:string = latestYear.toString();
+  const data = {
+    "PTS": normalize(stats[latestYearStr].pts, 0, 2500),
+    "AST": normalize(stats[latestYearStr].ast, 0, 1000),
+    "REB": normalize(stats[latestYearStr].drb, 0, 1000),
+    "STL": normalize(stats[latestYearStr].stl, 0, 200),
+    "BLK": normalize(stats[latestYearStr].blk, 0, 200),
+    "FG%": normalize(stats[latestYearStr].fg_pct, 0, 1),
+    "3P%": normalize(stats[latestYearStr]["3p_pct"], 0, 1),
+    "FT%": normalize(stats[latestYearStr].ft_pct, 0, 1),
   };
   return (
     <WidgetWrapper className="h-72 shadow-sm shadow-white ">
       <HeadingSection icon={ContactEmergencyOutlinedIcon} title="Player Performance"/>
       <section className="Chart h-[90%] flex pt-4 justify-center">
-        <RadarChart OPStats={stats}/>
+        <RadarChart OPStats={data}/>
       </section>
     </WidgetWrapper>
   );

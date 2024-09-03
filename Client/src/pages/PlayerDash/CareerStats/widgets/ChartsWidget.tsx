@@ -10,13 +10,13 @@ interface ChartsWidgetProps{
 }
 
 const ChartsWidget:React.FC<ChartsWidgetProps> = ({playerData}) => {
-  const stats = playerData.playerStats.stats
+  const stats = playerData.playerStats.stats[0]
   // Extract labels (game IDs) and data points (points scored) from dummyData
   const labels = Object.keys(stats).map((_) => `${_}`);
   const dataPoints = Object.values(stats).map(year => year.pts);
 
   const turnovers = Object.values(stats).map(year => year.tov);
-  const reb = Object.values(stats).map(year => year.drb);
+  const reb = Object.values(stats).map(year => year.drb); 
   
   return (
     <WidgetWrapper className=" shadow-sm shadow-white ">

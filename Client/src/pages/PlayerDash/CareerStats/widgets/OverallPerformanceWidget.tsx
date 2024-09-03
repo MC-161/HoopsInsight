@@ -3,26 +3,25 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
 import HeadingSection from "@/pages/PlayerDash/Overview/components/HeadingSection";
 import RadarChart from "@/components/charts/Radar";
-import { PlayerData } from "@/types/Dash/PlayerDash";
-import { aggregateStats, findMinMax, normalize, MinMaxStats } from "@/pages/utils/aggregate";
+import { getTotalStats, PlayerData, getMinMaxStats } from "@/types/Dash/PlayerDash";
+import {normalize} from "@/pages/utils/aggregate";
 
 interface OverallPerformanceProps {
   playerData: PlayerData;
 }
 
 const OverallPerformance: React.FC<OverallPerformanceProps> = ({ playerData }) => {
-  const stats = aggregateStats(playerData.playerStats.stats);
-  const minMax: MinMaxStats = findMinMax(playerData.playerStats.stats);
-
+  const stats = getTotalStats(playerData.playerStats);
+  const minMax = getMinMaxStats();
   const normalizedStats = {
-    "PTS": normalize(stats.pts, minMax.pts.min, minMax.pts.max),
-    "AST": normalize(stats.ast, minMax.ast.min, minMax.ast.max),
-    "REB": normalize(stats.drb, minMax.drb.min, minMax.drb.max),
-    "STL": normalize(stats.stl, minMax.stl.min, minMax.stl.max),
-    "BLK": normalize(stats.blk, minMax.blk.min, minMax.blk.max),
-    "FG%": normalize(stats.fg_pct, minMax.fg_pct.min, minMax.fg_pct.max),
-    "3P%": normalize(stats.threeP_pct, minMax.threeP_pct.min, minMax.threeP_pct.max),
-    "FT%": normalize(stats.ft_pct, minMax.ft_pct.min, minMax.ft_pct.max),
+    "PTS": normalize(stats.totalPoints, minMax.minPoints, minMax.maxPoints),
+    "AST": normalize(stats.totalAssists, minMax.minAssists, minMax.maxAssists),
+    "REB": normalize(stats.totalRebounds, minMax.minRebounds, minMax.maxRebounds),
+    "STL": normalize(stats.totalThreePointers, minMax.minSteals, minMax.maxSteals),
+    "BLK": normalize(stats.totalBlocks, minMax.minBlocks, minMax.maxBlocks),
+    "FG%": normalize(stats.totalFieldGoals, minMax.minFieldGoals, minMax.maxFieldGoals),
+    "3P%": normalize(stats.totalThreePointers, minMax.minThreePointers, minMax.maxThreePointers),
+    "FT%": normalize(stats.totalFreeThrows, minMax.minFreeThrows, minMax.maxFreeThrows),
   };
 
   return (

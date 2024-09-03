@@ -2,7 +2,7 @@ import React from 'react';
 import Record from './Record';
 import MetricOption from "@/pages/PlayerDash/Overview/components/MetricOption"
 import CardSection from './FpSection';
-import { PlayerData, PlayerGameData } from '@/types/Dash/PlayerDash';
+import { PlayerData, PlayerGameData} from '@/types/Dash/PlayerDash';
 
 interface OverTableProps{
   gameData: PlayerGameData
@@ -10,9 +10,17 @@ interface OverTableProps{
 }
 
 const OverTable: React.FC<OverTableProps> = ({gameData, playerData}) => {
-  const pts = playerData.playerStats.stats[2024].pts
-  const reb = playerData.playerStats.stats[2024].drb
-  const ast = playerData.playerStats.stats[2024].ast
+  const stats = playerData.playerStats.stats[0];
+
+  // Get all the years from the keys of the stats object
+  const years = Object.keys(stats).map(year => Number(year));
+  // Find the latest year
+  const latestYear = Math.max(...years);
+  const latestYearStr:string = latestYear.toString();
+  // Access the stats for the latest year
+  const pts = stats[latestYearStr].pts;
+  const reb = stats[latestYearStr].drb;
+  const ast = stats[latestYearStr].ast;
   return (
     <section className="overTable h-48 bg-gradient-to-b from-stone-700 to-background-alt to-60% flex flex-col justify-between ">
       <div className="flex items-center justify-between gap-1 ">

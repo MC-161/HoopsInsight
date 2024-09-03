@@ -60,7 +60,7 @@ const RadarChart: React.FC<RadarChartProps> = ({OPStats}) => {
         min: 0,
         max: 100, // Set scale range from 0 to 100
         ticks: {
-          precision: 0, // Whole numbers
+          precision: 2, // Whole numbers
           backdropColor: "transparent",
           color: 'rgba(255, 255, 255, 0.7)',
           showLabelBackdrop: false,
