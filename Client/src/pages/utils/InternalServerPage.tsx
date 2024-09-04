@@ -7,7 +7,7 @@ const InternalServerPage = () => {
 
   return (
     <div className="bg-black w-full h-screen flex items-center justify-center">
-      <div className="md:mr-20 max-w-screen-md mx-4 p-6 rounded-lg shadow-lg flex flex-col md:flex-row items-center gap-4">
+      <div className=" border-2 w-3/4 shadow-glow mx-4 p-6 rounded-lg flex flex-col md:flex-row items-center gap-4">
         <div className="flex-1 flex justify-center md:justify-end">
           <img
             className="max-w-xs md:max-w-md h-auto"
