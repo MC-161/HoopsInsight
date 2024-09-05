@@ -1,9 +1,9 @@
 import { useLocation } from "react-router-dom";
 import TabsSection from "./TabsSection";
-import usePlayerAndGame from "@/hooks/usePlayerAndGames";
-import Loader from "../utils/LoadingPage";
-import InternalServerPage from "../utils/InternalServerPage";
-import { TeamInfo, TeamStats, TeamTopPerformers, TeamVideos } from "@/types/Dash/TeamDash";
+// import usePlayerAndGame from "@/hooks/usePlayerAndGames";
+// import Loader from "../utils/LoadingPage";
+// import InternalServerPage from "../utils/InternalServerPage";
+import { TeamData, TeamInfo, TeamStats, TeamTopPerformers, TeamVideos } from "@/types/Dash/TeamDash";
 const TeamDash = () => {
   const { search } = useLocation();
   const queryParams = new URLSearchParams(search);
@@ -258,6 +258,14 @@ const TeamDash = () => {
   };
 
 
+  const teamData: TeamData = {
+    _id: teamInfo._id,
+    teamInfo: teamInfo,
+    teamVideos: teamVideos,
+    topPerformers: teamTop,
+    teamStats: teamStats,
+  }
+
   const nbaComName = teamInfo.name || "Default Name";
   const [firstname, lastname] = nbaComName.split(" ");
 
@@ -273,12 +281,12 @@ const TeamDash = () => {
           <p className="lName font-bold text-2xl">{lastname}</p>
         </div>
         <img
-          className="w-32 absolute left-40 md:left-80 md:bottom-6 lg:left-36 border-2 rounded-lg pt-3"
+          className="w-32 absolute left-40 bottom-8 md:left-80 md:bottom-6 lg:left-36 border-2 rounded-lg pt-3"
           src={headshotUrl}
           alt="No HeadShot Available"
         />
         <div className="">
-          <TabsSection teamData={teamInfo} />
+          <TabsSection teamData={teamData} />
         </div>
       </section>
     </div>

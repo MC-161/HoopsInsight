@@ -3,14 +3,12 @@ export interface TeamVideos {
   videos: Array<{ [key: string]: string }>;
 }
 
-interface TeamData{
+export interface TeamData{
   _id: string;
-  name: string;
-  videos: Array<{ [key: string]: string }>;
-  logo: string;
-  conference: string;
-  topPerformers: Array<StatLeaders>;
-  stats: Array<{ [year: string]: SeasonStats }>;
+  teamInfo: TeamInfo;
+  teamVideos: TeamVideos;
+  topPerformers: TeamTopPerformers
+  teamStats: TeamStats;
 };
 
 export interface TeamInfo{
@@ -71,7 +69,46 @@ interface StatLeaders {
   reb: StatDetail;
 }
 
-interface StatDetail {
+export interface StatDetail {
   total: string;
   playerID: string[];
+}
+
+export interface TotalStats {
+  totalPoints: number;
+  totalAssists: number;
+  totalRebounds: number;
+  totalFieldGoals: number;
+  totalThreePointers: number;
+  totalFreeThrows: number;
+  totalSteals: number;
+  totalBlocks: number;
+}
+
+export function getTotalStats(teamData: TeamData): TotalStats {
+  const totals: TotalStats = {
+    totalPoints: 0,
+    totalAssists: 0,
+    totalRebounds: 0,
+    totalFieldGoals: 0,
+    totalThreePointers: 0,
+    totalFreeThrows: 0,
+    totalSteals: 0,
+    totalBlocks: 0,
+  };
+
+  teamData.teamStats.stats.forEach(yearlyStatsObject => {
+    // Iterate through each year's statistics
+    Object.values(yearlyStatsObject).forEach(yearlyStats => {
+      totals.totalPoints += yearlyStats.ts_pct * yearlyStats.pace * (yearlyStats.w + yearlyStats.l); 
+      totals.totalAssists += yearlyStats.pace * 0.5;
+      totals.totalRebounds += yearlyStats.orb_pct * 0.5;
+      totals.totalFieldGoals += yearlyStats.ftr * 100;
+      totals.totalThreePointers += yearlyStats["3par"] * 100;
+      totals.totalFreeThrows += yearlyStats.ftr * 100;
+      totals.totalSteals += yearlyStats.drb_pct * 0.5;
+    });
+  });
+
+  return totals;
 }

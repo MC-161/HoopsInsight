@@ -1,6 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import Footer from "@/components/Footer/Footer";
+import Overview from "@/pages/TeamDash/Overview/Overview";
 
 
 interface TabsSectionProps{
@@ -9,17 +10,17 @@ interface TabsSectionProps{
 
 const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
   const [selectedTab, setSelectedTab] = useState<
-    "overview" | "matches" | "seasonStats" | "careerStats"
+    "overview" | "teamStats" | "seasonStats" | "careerStats"
   >("overview");
 
   const handleTabsChange = (value: string) => {
     setSelectedTab(
-      value as "overview" | "matches" | "seasonStats" | "careerStats"
+      value as "overview" | "teamStats" | "seasonStats" | "careerStats"
     );
   };
 
-  const changeToMatchesTab = () => {
-    setSelectedTab("matches");
+  const changeToteamStatsTab = () => {
+    setSelectedTab("teamStats");
   };
 
   return (
@@ -37,14 +38,14 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
               setSelectedTab(
                 e.target.value as
                   | "overview"
-                  | "matches"
+                  | "teamStats"
                   | "seasonStats"
                   | "careerStats"
               )
             }
           >
             <option value="overview">Overview</option>
-            <option value="matches">Matches</option>
+            <option value="teamStats">Team Stats</option>
             <option value="seasonStats">Season Stats</option>
             <option value="careerStats">Career Stats</option>
           </select>
@@ -58,11 +59,11 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
             Overview
           </TabsTrigger>
           <TabsTrigger
-            value="matches"
-            className={`tab-item ${selectedTab === "matches" ? "active" : ""}`}
-            onClick={() => handleTabsChange("matches")}
+            value="teamStats"
+            className={`tab-item ${selectedTab === "teamStats" ? "active" : ""}`}
+            onClick={() => handleTabsChange("teamStats")}
           >
-            Matches
+            Team Stats
           </TabsTrigger>
           <TabsTrigger
             value="seasonStats"
@@ -85,9 +86,10 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
         </TabsList>
         <div className="tabs-content bg-background-dash">
           <TabsContent value="overview">
+            <Overview teamData={teamData}/>
             <Footer />
           </TabsContent>
-          <TabsContent value="matches">
+          <TabsContent value="teamStats">
             <Footer />
           </TabsContent>
           <TabsContent value="seasonStats">
