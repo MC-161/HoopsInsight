@@ -21,7 +21,6 @@ const TeamDash = () => {
     logo: "https://cdn.nba.com/teams/uploads/sites/1610612737/2023/01/atl_hawks_primary_icon.svg",
     conference: "Eastern Conference",
   };
-
   const teamStats: TeamStats = {
     _id: "ATL",
     stats: [

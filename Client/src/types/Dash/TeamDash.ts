@@ -23,7 +23,11 @@ export interface TeamStats {
   stats: Array<{ [year: string]: SeasonStats }>;
 }
 
-interface SeasonStats {
+
+export interface TeamTableData {
+  [year: string]: SeasonStats;
+}
+export interface SeasonStats {
   year: number;
   age: number;
   w: number;
@@ -111,4 +115,79 @@ export function getTotalStats(teamData: TeamData): TotalStats {
   });
 
   return totals;
+}
+
+export interface PlayerStats {
+  blk: string;
+  fga: string;
+  DefReb: string;
+  ast: string;
+  ftp: string;
+  tptfgp: string;
+  tptfgm: string;
+  trueShootingPercentage: string;
+  stl: string;
+  fgm: string;
+  pts: string;
+  reb: string;
+  fgp: string;
+  effectiveShootingPercentage: string;
+  fta: string;
+  mins: string;
+  gamesPlayed: string;
+  TOV: string;
+  tptfga: string;
+  OffReb: string;
+  ftm: string;
+}
+
+export interface Injury {
+  description: string;
+  injDate: string;
+  designation: string;
+}
+
+export interface Player {
+  college: string;
+  fantasyProsLink: string;
+  jerseyNum: string;
+  bRefID: string;
+  espnName: string;
+  yahooLink: string;
+  sleeperBotID: string;
+  fantasyProsPlayerID: string;
+  nbaComLink: string;
+  nbaComHeadshot: string;
+  lastGamePlayed: string;
+  espnLink: string;
+  yahooPlayerID: string;
+  pos: string;
+  teamID: string;
+  injury: Injury;
+  nbaComName: string;
+  rotoWirePlayerIDFull: string;
+  rotoWirePlayerID: string;
+  exp: string;
+  height: string;
+  nbaComID: string;
+  espnHeadshot: string;
+  espnID: string;
+  weight: string;
+  team: string;
+  bRefName: string;
+  espnShortName: string;
+  bDay: string;
+  shortName: string;
+  longName: string;
+  playerID: string;
+  stats: PlayerStats;
+}
+
+export interface TeamRoster {
+  statusCode: number;
+  body: {
+    team: string;
+    teamID: string;
+    roster: Player[];
+  };
 }
