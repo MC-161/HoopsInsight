@@ -20,7 +20,7 @@ const ChartsWidget:React.FC<ChartsWidgetProps> = ({teamData}) => {
   const wins = stats[latestYear].w
   const loss = stats[latestYear].l
   return (
-    <div className="bg-background-alt min-h-[550px] rounded-md shadow-sm shadow-white pb-8 md: pb-0">
+    <div className="bg-background-alt min-h-[550px] rounded-md shadow-sm shadow-white pb-8 md:pb-0">
       <HeadingSection icon={BarChartOutlinedIcon} title="Visuals" />
       <div className="grid grid-cols-1 md:grid-cols-10 gap-4 pt-3 px-4">
         <div className="md:col-span-2">

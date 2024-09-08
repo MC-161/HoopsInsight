@@ -1,37 +1,34 @@
+import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
-import { ScheduleResponse, TeamData} from "@/types/Dash/TeamDash";
-import TeamExInfo from "@/pages/TeamDash/Overview/widgets/TeamExInfo";  
+import { ScheduleResponse, TeamData } from "@/types/Dash/TeamDash";
+import TeamExInfo from "@/pages/TeamDash/Overview/widgets/TeamExInfo";
 import Schedule from "./widgets/ScheduleWidget";
-interface RosterProps {
+import useSchedule from "@/hooks/useSchedule";
+
+interface ScheduleCProps {
   teamData: TeamData;
 }
 
-const Roster: React.FC<RosterProps> = ({ teamData }) => {
-  const teamId = teamData._id
-  // Sample data
-  const schedule: ScheduleResponse = {
-    team: "DAL",
-    teamID: "7",
-    schedule: [
-      {
-        gameID: "20241024_SA@DAL",
-        seasonType: "Regular Season",
-        away: "SA",
-        gameTime: "7:30 PM",
-        teamIDHome: "7",
-        gameDate: "2024-10-24",
-        gameStatus: "Scheduled",
-        gameTime_epoch: "1729812600.0",
-        teamIDAway: "27",
-        isTournamentGame: "False",
-        neutralSite: "False",
-        home: "DAL",
-        gameStatusCode: "0"
-      },
-      // Add other games as needed
-    ]
-  };
+const ScheduleC: React.FC<ScheduleCProps> = ({ teamData }) => {
+  const teamId = teamData._id;
+  const { data, isLoading, error } = useSchedule(teamId);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoading(false);
+    }
+  }, [isLoading]);
+
+  if (loading) {
+    return <div>Loading schedule data...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <div className="flex justify-center pb-8">
       <Grid
@@ -47,11 +44,11 @@ const Roster: React.FC<RosterProps> = ({ teamData }) => {
           </div>
         </Grid>
         <Grid item xs={12} md={9.4}>
-          <Schedule schedule={schedule}/>
+          <Schedule schedule={data as ScheduleResponse} />
         </Grid>
       </Grid>
     </div>
   );
 };
 
-export default Roster;
+export default ScheduleC;

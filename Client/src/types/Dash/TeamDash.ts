@@ -194,26 +194,30 @@ export interface TeamRoster {
 
 
 // types.ts
-export interface Game {
+export interface ScheduleResponse {
+  statusCode: number;
+  body: TeamSchedule;
+}
+
+interface TeamSchedule {
+  team: string;
+  teamID: string;
+  schedule: Game[];
+}
+
+interface Game {
   gameID: string;
   seasonType: string;
   away: string;
   gameTime: string;
-  teamIDHome: string;
   gameDate: string;
   gameStatus: string;
-  gameTime_epoch: string;
-  teamIDAway: string;
-  isTournamentGame: string;
   neutralSite: string;
+  isTournamentGame: string;
   home: string;
+  teamIDHome: string;
+  teamIDAway: string;
   gameStatusCode: string;
-}
-
-export interface ScheduleResponse {
-  team: string;
-  teamID: string;
-  schedule: Game[];
 }
 
 

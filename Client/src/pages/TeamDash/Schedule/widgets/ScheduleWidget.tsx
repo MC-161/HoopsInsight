@@ -1,21 +1,24 @@
-// Schedule.tsx
 import React from 'react';
-import { AccessTime, LocationOn} from '@mui/icons-material';
+import { AccessTime, LocationOn } from '@mui/icons-material';
 import { ScheduleResponse } from '@/types/Dash/TeamDash';
 
-
-interface ScheduleProps{
-  schedule: ScheduleResponse
+interface ScheduleProps {
+  schedule: ScheduleResponse;
 }
 
+const Schedule: React.FC<ScheduleProps> = ({ schedule }) => {
+  // Destructure the team and schedule from the response body
+  const games = schedule.body.schedule
+  const team = schedule.body.team
 
-const Schedule: React.FC<ScheduleProps> = ({schedule}) => {
   return (
     <div className="bg-background-dash-alt min-h-screen">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-primary-main mb-6">Team {schedule.team} Schedule</h1>
+        <h1 className="text-3xl font-extrabold text-primary-main mb-6">
+          Team {team} Schedule
+        </h1>
         <div className="grid md:grid-cols-3 gap-5">
-          {schedule.schedule.map((game) => (
+          {games.map((game) => (
             <div
               key={game.gameID}
               className="bg-background-alt shadow-md rounded-lg overflow-hidden border border-gray-200"
@@ -24,8 +27,12 @@ const Schedule: React.FC<ScheduleProps> = ({schedule}) => {
                 <div className="flex items-center space-x-3">
                   <LocationOn className="text-primary-main" fontSize="large" />
                   <div>
-                    <h2 className="text-xl font-semibold">{game.home} vs {game.away}</h2>
-                    <p className="text-sm text-primary">Date: {new Date(game.gameDate).toLocaleDateString()}</p>
+                    <h2 className="text-xl font-semibold">
+                      {game.home} vs {game.away}
+                    </h2>
+                    <p className="text-sm text-primary">
+                      Date: {new Date(game.gameDate).toLocaleDateString()}
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">

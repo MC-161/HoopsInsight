@@ -1,23 +1,34 @@
+import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
-import { TeamData, TeamRoster} from "@/types/Dash/TeamDash";
-import TeamExInfo from "@/pages/TeamDash/Overview/widgets/TeamExInfo";  
+import { TeamData, TeamRoster } from "@/types/Dash/TeamDash";
+import TeamExInfo from "@/pages/TeamDash/Overview/widgets/TeamExInfo";
 import RosterWidget from "./widgets/RosterWidget";
 import useTeamRoster from "@/hooks/useTeamRoster";
+
 interface RosterProps {
   teamData: TeamData;
 }
 
 const Roster: React.FC<RosterProps> = ({ teamData }) => {
-  const teamId = teamData._id
-  const { data, isLoading, error} = useTeamRoster(teamId);
-  if (isLoading) {
-    return <div>Loading...</div>;
+  const teamId = teamData._id;
+  const { data, isLoading, error } = useTeamRoster(teamId);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoading(false);
+    }
+  }, [isLoading]);
+
+  if (loading) {
+    return <div>Loading roster data...</div>;
   }
 
   if (error) {
     return <div>Error: {error.message}</div>;
   }
+
   return (
     <div className="flex justify-center pb-8">
       <Grid

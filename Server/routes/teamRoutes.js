@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {getAllTeams, getTeamStats, getTeamBio, getTeamTopPerformers, getVideos, fetchTeamRoster, fetchNews} from "../controllers/teamController.js"
+import {getAllTeams, getTeamStats, getTeamBio, getTeamTopPerformers, getVideos, fetchTeamRoster, fetchNews, fetchSchedule} from "../controllers/teamController.js"
 
 const router = Router();
 
@@ -367,4 +367,91 @@ router.get('/:id/roster', fetchTeamRoster)
  */
 
 router.get('/:id/news', fetchNews)
+
+
+/**
+ * @swagger
+ * /api/teams/{id}/schedule:
+ *  get:
+ *    summary: Get Team Schedule
+ *    tags: [NBA Schedule]
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The unique identifier for the team (team abbreviation or ID).
+ *    responses:
+ *       200:
+ *         description: The schedule for the specified team.
+ *         content:
+ *            application/json:
+ *              schema:
+ *                 type: object
+ *                 properties:
+ *                    statusCode:
+ *                      type: number
+ *                      example: 200
+ *                    body:
+ *                        type: array
+ *                        items:
+ *                          type: object
+ *                          properties:
+ *                            gameID:
+ *                              type: string
+ *                              description: The unique identifier for the game.
+ *                              example: "20241024_SA@DAL"
+ *                            seasonType:
+ *                              type: string
+ *                              description: The type of the season (e.g., Regular Season).
+ *                              example: "Regular Season"
+ *                            away:
+ *                              type: string
+ *                              description: The abbreviation of the away team.
+ *                              example: "SA"
+ *                            gameTime:
+ *                              type: string
+ *                              description: The time of the game.
+ *                              example: "7:30 PM"
+ *                            gameDate:
+ *                              type: string
+ *                              description: The date of the game.
+ *                              example: "2024-10-24"
+ *                            gameStatus:
+ *                              type: string
+ *                              description: The status of the game.
+ *                              example: "Scheduled"
+ *                            neutralSite:
+ *                              type: string
+ *                              description: Indicates if the game is played at a neutral site.
+ *                              example: "False"
+ *                            isTournamentGame:
+ *                              type: string
+ *                              description: Indicates if the game is part of a tournament.
+ *                              example: "False"
+ *                            home:
+ *                              type: string
+ *                              description: The abbreviation of the home team.
+ *                              example: "DAL"
+ *                            teamIDHome:
+ *                              type: string
+ *                              description: The ID of the home team.
+ *                              example: "7"
+ *                            teamIDAway:
+ *                              type: string
+ *                              description: The ID of the away team.
+ *                              example: "27"
+ *                            gameStatusCode:
+ *                              type: string
+ *                              description: The status code of the game.
+ *                              example: "0"
+ *       404:
+ *         description: Schedule not found for the provided team ID.
+ *         $ref: '#/components/responses/ErrorNotFound'
+ *       500:
+ *         description: Internal server error.
+ *         $ref: '#/components/responses/ErrorInternalServerError'
+ */
+router.get('/:id/schedule', fetchSchedule)
 export default router;

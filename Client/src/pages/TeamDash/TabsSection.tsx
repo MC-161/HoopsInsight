@@ -5,6 +5,7 @@ import Overview from "@/pages/TeamDash/Overview/Overview";
 import TeamStats from "./TeamStats/TeamStats";
 import Roster from "./Roster/Roster";
 import Schedule from "./Schedule/Schedule";
+import ScheduleC from "./Schedule/Schedule";
 
 
 interface TabsSectionProps{
@@ -101,7 +102,7 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
             <Footer />
           </TabsContent>
           <TabsContent value="schedule">
-            <Schedule teamData={teamData}/>
+            <ScheduleC teamData={teamData}/>
             <Footer />
           </TabsContent>
         </div>
