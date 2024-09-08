@@ -121,6 +121,23 @@ export const fetchNews = async (req, res) => {
     });
   }
 }
+export const fetchSchedule = async (req, res) => {
+  try {
+    const {id} = req.params
+    const teamSchedule = await nbaService.getSchedule(id);
+    res.status(200).json(teamSchedule)
+  } catch (error) {
+    return res.status(404).json({
+      message: "Data Not Found",
+      errorCode: "ERR404"
+    });
+  }
+}
+
+
+
+
+
 
 
 

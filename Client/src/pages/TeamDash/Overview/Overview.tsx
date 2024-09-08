@@ -16,7 +16,7 @@ const Overview: React.FC<OverviewProps> = ({ teamData }) => {
         container
         columnSpacing={4}
         padding={4}
-        className="gap-y-6 sm:gap-y-8 md:gap-y-4 lg:gap-y-1 max-w-screen-2xl"
+        className="gap-y-6 sm:gap-y-8 md:gap-y-4 lg:gap-y-4 max-w-screen-2xl"
       >
         <Grid item xs={12} md={2.6}>
           <TeamExInfo teamData={teamData} />

@@ -93,6 +93,27 @@ const nbaService = {
       console.error(error);
       throw error;
     }
-  }, 
+  }, getSchedule : async (id) => {
+    // Decide whether the ID is a team abbreviation or player ID
+    const options = {
+      method: 'GET',
+      url: 'https://tank01-fantasy-stats.p.rapidapi.com/getNBATeamSchedule',
+      params: {
+        teamAbv: `${id}`,
+        season: '2025'
+      },
+      headers: {
+        'x-rapidapi-key': `${config.nbaApiKey}`,
+        'x-rapidapi-host': 'tank01-fantasy-stats.p.rapidapi.com'
+      }
+    };
+    
+    try {
+      const response = await axios.request(options);
+      return response.data
+    } catch (error) {
+      console.error(error);
+    }
+  },
 }
 export default nbaService;

@@ -312,3 +312,16 @@ export interface OPStats{
   "3P%": number,
   "FT%": number
 }
+
+
+export interface NBAArticle {
+  link: string;
+  image: string;
+  title: string;
+  playerIDs: string[];
+}
+
+export interface NBAResponse {
+  statusCode: number;
+  body: NBAArticle[];
+}

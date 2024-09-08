@@ -4,6 +4,8 @@ import Footer from "@/components/Footer/Footer";
 import Overview from "@/pages/TeamDash/Overview/Overview";
 import TeamStats from "./TeamStats/TeamStats";
 import Roster from "./Roster/Roster";
+import Schedule from "./Schedule/Schedule";
+import ScheduleC from "./Schedule/Schedule";
 
 
 interface TabsSectionProps{
@@ -12,12 +14,12 @@ interface TabsSectionProps{
 
 const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
   const [selectedTab, setSelectedTab] = useState<
-    "overview" | "teamStats" | "roster"
+    "overview" | "teamStats" | "roster" | "schedule"
   >("overview");
 
   const handleTabsChange = (value: string) => {
     setSelectedTab(
-      value as "overview" | "teamStats" | "roster"
+      value as "overview" | "teamStats" | "roster" | "schedule"
     );
   };
 
@@ -42,13 +44,14 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
                   | "overview"
                   | "teamStats"
                   | "roster"
+                  | "schedule"
               )
             }
           >
             <option value="overview">Overview</option>
             <option value="teamStats">Team Stats</option>
             <option value="roster">Season Stats</option>
-            <option value="careerStats">Career Stats</option>
+            <option value="schedule">Schedule</option>
           </select>
         </div>
         <TabsList className="h-full ml-72 hidden lg:block">
@@ -75,6 +78,15 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
           >
             Roster
           </TabsTrigger>
+          <TabsTrigger
+            value="schedule"
+            className={`tab-item ${
+              selectedTab === "schedule" ? "active" : ""
+            }`}
+            onClick={() => handleTabsChange("schedule")}
+          >
+            Schedule
+          </TabsTrigger>
         </TabsList>
         <div className="tabs-content bg-background-dash">
           <TabsContent value="overview">
@@ -87,6 +99,10 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
           </TabsContent>
           <TabsContent value="roster">
             <Roster teamData={teamData}/>
+            <Footer />
+          </TabsContent>
+          <TabsContent value="schedule">
+            <ScheduleC teamData={teamData}/>
             <Footer />
           </TabsContent>
         </div>

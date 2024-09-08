@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import ToolsWidget from "@/pages/PlayerDash/Overview/widgets/ToolsWidget";
-import { TeamData, TeamRoster } from "@/types/Dash/TeamDash";
+import { ScheduleResponse, TeamData } from "@/types/Dash/TeamDash";
 import TeamExInfo from "@/pages/TeamDash/Overview/widgets/TeamExInfo";
-import RosterWidget from "./widgets/RosterWidget";
-import useTeamRoster from "@/hooks/useTeamRoster";
+import Schedule from "./widgets/ScheduleWidget";
+import useSchedule from "@/hooks/useSchedule";
 
-interface RosterProps {
+interface ScheduleCProps {
   teamData: TeamData;
 }
 
-const Roster: React.FC<RosterProps> = ({ teamData }) => {
+const ScheduleC: React.FC<ScheduleCProps> = ({ teamData }) => {
   const teamId = teamData._id;
-  const { data, isLoading, error } = useTeamRoster(teamId);
+  const { data, isLoading, error } = useSchedule(teamId);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Roster: React.FC<RosterProps> = ({ teamData }) => {
   }, [isLoading]);
 
   if (loading) {
-    return <div>Loading roster data...</div>;
+    return <div>Loading schedule data...</div>;
   }
 
   if (error) {
@@ -44,11 +44,11 @@ const Roster: React.FC<RosterProps> = ({ teamData }) => {
           </div>
         </Grid>
         <Grid item xs={12} md={9.4}>
-          <RosterWidget rosterData={data as TeamRoster} />
+          <Schedule schedule={data as ScheduleResponse} />
         </Grid>
       </Grid>
     </div>
   );
 };
 
-export default Roster;
+export default ScheduleC;
