@@ -43,3 +43,18 @@ export const fetchGamesPlayed = async (req, res) => {
     });
   }
 }
+
+
+export const fetchNews = async (req, res) => {
+  try {
+    const {id} = req.params
+    const playerNews = await nbaService.getNews(id, false);
+    res.status(200).json(playerNews)
+  } catch (error) {
+    return res.status(404).json({
+      message: "Data Not Found",
+      errorCode: "ERR404"
+    });
+  }
+}
+
