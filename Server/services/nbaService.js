@@ -48,5 +48,51 @@ const nbaService = {
       throw new Error('Sorry No Games for that player')
     }
   },  
+  getTeamRoster : async(teamId) => {
+    const options = {
+      method: 'GET',
+      url: 'https://tank01-fantasy-stats.p.rapidapi.com/getNBATeamRoster',
+      params: {
+        teamAbv: `${teamId}`,
+        statsToGet: 'totals'
+      },
+      headers: {
+        'x-rapidapi-key': `${config.nbaApiKey}`,
+        'x-rapidapi-host': 'tank01-fantasy-stats.p.rapidapi.com'
+      }
+    };
+    
+    try {
+      const response = await axios.request(options);
+      return response.data
+    } catch (error) {
+      console.error(error);
+    }
+  },  
+  getNews : async (id, isTeam = true) => {
+    // Decide whether the ID is a team abbreviation or player ID
+    const options = {
+      method: 'GET',
+      url: 'https://tank01-fantasy-stats.p.rapidapi.com/getNBANews',
+      params: {
+        playerID: isTeam ? '' : `${id}`,
+        teamAbv: isTeam ? `${id}` : '', 
+        recentNews: 'true',
+        maxItems: '10'
+      },
+      headers: {
+        'x-rapidapi-key': `${config.nbaApiKey}`,
+        'x-rapidapi-host': 'tank01-fantasy-stats.p.rapidapi.com'
+      }
+    };
+  
+    try {
+      const response = await axios.request(options);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }, 
 }
 export default nbaService;

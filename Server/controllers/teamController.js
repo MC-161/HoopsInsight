@@ -1,4 +1,6 @@
 import teamService from "../services/teamService.js";
+import nbaService from "../services/nbaService.js"
+
 
 // Method GET all TEAMS
 export const getAllTeams = async (req, res) => {
@@ -90,6 +92,38 @@ export const getVideos = async(req, res) => {
     });
   }
 }
+
+
+// Method 
+// Method GET Team Roster   
+export const fetchTeamRoster = async (req, res) => {
+  try {
+    const {id} = req.params
+    const teamRoster = await nbaService.getTeamRoster(id);
+    res.status(200).json(teamRoster)
+  } catch (error) {
+    return res.status(404).json({
+      message: "Data Not Found",
+      errorCode: "ERR404"
+    });
+  }
+}
+
+export const fetchNews = async (req, res) => {
+  try {
+    const {id} = req.params
+    const playerNews = await nbaService.getNews(id, true);
+    res.status(200).json(playerNews)
+  } catch (error) {
+    return res.status(404).json({
+      message: "Data Not Found",
+      errorCode: "ERR404"
+    });
+  }
+}
+
+
+
 // Method POST Team Video 
 
 
