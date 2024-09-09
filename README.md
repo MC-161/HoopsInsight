@@ -115,7 +115,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## 🔗 Links
 
-- **Live Demo**: Live HoopsInsight App <!-- Update this with your actual live app link -->
-- **API Documentation**: API Docs <!-- If you have API docs -->
+- **Live Demo**: https://hoopsinsight.vercel.app/ <!-- Update this with your actual live app link -->
+- **API Documentation**: https://nbav2server.onrender.com/ <!-- If you have API docs -->
 - **GitHub Repository**: [GitHub](https://github.com/your-username/HoopsInsight)
 
