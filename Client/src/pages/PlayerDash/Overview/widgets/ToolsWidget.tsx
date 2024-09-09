@@ -2,9 +2,9 @@ import WidgetWrapper from "@/components/Widget/WidgetWrapper";
 import { Button } from "@/components/ui/button";
 const ToolsWidget = () => {
   return (
-    <WidgetWrapper className="h-[540px] shadow-sm shadow-zinc-50">
-      <div className="tools flex flex-col gap-2">
-        <p className="title font-semibold px-4 pt-2 text-sm">Tools</p>
+    <WidgetWrapper className="lg:h-[540px] shadow-sm shadow-zinc-50">
+      <p className="title font-semibold px-4 pt-2 text-sm">Tools</p>
+      <div className="tools flex lg:flex-col gap-2">
         <section className="comparison flex flex-col gap-1">
           <p className="title text-xs px-4 ">Comparison</p>
           <p className="text-xs font-extralight px-4 ">Try out our comparison tool find out who really is better</p>

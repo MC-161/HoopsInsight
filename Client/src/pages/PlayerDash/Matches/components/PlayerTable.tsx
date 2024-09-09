@@ -1,6 +1,6 @@
 import React from 'react'
 import DataTable  from '@/pages/PlayerDash/Matches/components/games/DataTable'; 
-import { PlayerGameData, PlayerGameStats } from '@/types/Dash/PlayerDash';
+import { PlayerGameData} from '@/types/Dash/PlayerDash';
 import {columns} from '@/pages/PlayerDash/Matches/components/games/columns'
 
 interface GamePerformanceProps{

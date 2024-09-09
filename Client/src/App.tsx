@@ -12,6 +12,8 @@ import PlayerDash from "./pages/PlayerDash/PlayerDash";
 import TeamSearch from "./pages/TeamSearch/TeamSearch";
 import TeamDash from "./pages/TeamDash/TeamDash";
 import InternalServerPage from "./pages/utils/InternalServerPage";
+import AiChatPage from "./pages/Tools/Ai_ChatBot/AIChat";
+import ComparisonPage from "./pages/Tools/Comparison/Comparison";
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -52,7 +54,8 @@ const App: React.FC = () => {
             <Route path="/search/player" element={<PlayerSearch />} />
             <Route path="/player-dash" element={<PlayerDash/>} />
             <Route path="/search/team" element={<TeamSearch />} />
-            <Route path="/team-dash" element={<TeamDash/>} />
+            <Route path="/tools/AICHAT" element={<AiChatPage/>} />
+            <Route path="/tools/Comparison" element={<ComparisonPage/>} />
              {/* Catch-all route for undefined paths */}
             <Route path="*" element={<InternalServerPage />} />
             {/*

@@ -42,7 +42,9 @@ const UltimateNBACompanion: React.FC = () => (
         />
       ))}
     </div>
-    <div className="display border-2 mt-9 mx-4 h-[600px] rounded-md hidden lg:flex"></div>
+    <div className="display border-2 mt-9 mx-4 h-[600px] rounded-md hidden lg:flex">
+      <div className="w-full h-full flex items-center justify-center font-bold text-xl">Coming Soon</div>
+    </div>
     <div className="Powered text-primary-main flex flex-col items-center mt-10">
       <div className=" flex-col items-center justify-center mt-4 hidden md:flex">
         <p className="font-extralight text-primary-alt pt-10 lg:pt-0">

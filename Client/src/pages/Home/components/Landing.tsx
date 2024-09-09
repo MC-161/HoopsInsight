@@ -1,4 +1,4 @@
-import title from "@/assets/Landing/NBASTATS.svg";
+import title from "@/assets/Landing/HOOPSINSIGHT.svg";
 
 const Landing = () => {
   return (

@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Search, Link, Build, Close as CloseIcon } from "@mui/icons-material";
+import {Link, Build, Close as CloseIcon } from "@mui/icons-material";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import NBALOGO from "@/assets/Nav/NbaLogo.png";
 import ESPNLOGO from "@/assets/Nav/Espn.png";
@@ -17,6 +17,7 @@ import { Drawer, IconButton, List} from "@mui/material";
 import { Menu as MenuIcon } from "lucide-react";
 import ListItemWithLink from "@/pages/utils/ListItemWithLink"
 import { useNavigate } from "react-router-dom";
+import SearchMenu from "./SearchMenu";
 
 // Lazy load components to improve initial load time
 const Option = lazy(() => import("./Option"));
@@ -39,40 +40,38 @@ export function Navbar() {
       setMenuOpen(open);
     };
 
-  const mobileMenu = (
-    <div className="flex flex-col h-full bg-white/10 text-white p-4 backdrop-blur-md">
-      <div className="flex justify-end">
-        <IconButton onClick={toggleDrawer(false)} className="text-white">
-          <CloseIcon className="text-white" fontSize="large" />
-        </IconButton>
+    const mobileMenu = (
+      <div className="flex flex-col h-full bg-white/10 text-white p-4 backdrop-blur-md">
+        <div className="flex justify-end">
+          <IconButton onClick={toggleDrawer(false)} className="text-white">
+            <CloseIcon className="text-white" fontSize="large" />
+          </IconButton>
+        </div>
+        <div className="flex flex-col items-center flex-grow mt-4">
+          <List className="text-white flex flex-col justify-center items-center gap-10">
+            <div className="border-2 rounded-md w-96 flex justify-center bg-nav-search">
+              <img className="w-32" src={logo} alt="Logo" />
+            </div>
+    
+            {/* Search Menu with Sub-options */}
+            <SearchMenu />
+    
+            <ListItemWithLink
+              to="/tools"
+              icon={<Build fontSize="large" />}
+              primaryText="Tools"
+              className="flex flex-col justify-center items-center"
+            />
+            <ListItemWithLink
+              to="/external"
+              icon={<Link fontSize="large" />}
+              primaryText="External"
+              className="flex flex-col justify-center items-center"
+            />
+          </List>
+        </div>
       </div>
-      <div className="flex flex-col items-center flex-grow mt-4">
-        <List className="text-white flex flex-col justify-center items-center gap-10">
-          <div className="border-2 rounded-md w-96 flex justify-center bg-nav-search">
-            <img className="w-32" src={logo} alt="Logo" />
-          </div>
-          <ListItemWithLink
-            to="/search"
-            icon={<Search fontSize="large" />}
-            primaryText="Search"
-            className="flex flex-col justify-center items-center"
-          />
-          <ListItemWithLink
-            to="/tools"
-            icon={<Build fontSize="large" />}
-            primaryText="Tools"
-            className="flex flex-col justify-center items-center"
-          />
-          <ListItemWithLink
-            to="/external"
-            icon={<Link fontSize="large" />}
-            primaryText="External"
-            className="flex flex-col justify-center items-center"
-          />
-        </List>
-      </div>
-    </div>
-  );
+    );
 
   return (
     <nav className="fixed top-0 z-50 w-full md:w-screen flex justify-center">
@@ -81,7 +80,7 @@ export function Navbar() {
           <div className="flex justify-between items-center w-96 md:w-auto">
             <div onClick={() => navigate("/")} className="flex items-center text-primary-main pr-4 pl-4 cursor-pointer">
               <img className="h-14" src={logo} alt="NBA Logo" />
-              <p className="text-sm font-bold">NBA STATS</p>
+              <p className="text-sm font-bold">HOOPSINSIGHT</p>
             </div>
             <IconButton
               className="md:hidden text-white pr-3"
@@ -144,13 +143,13 @@ export function Navbar() {
                       title="AI Chatbot"
                       description="NBA AI Chatbot answers queries about NBA players and teams, providing quick and accurate basketball information."
                       bgClass="bg-AI-Chat"
-                      href="/ai-chatbot"
+                      href="/tools/AICHAT"
                     />
                     <NavItemCard
                       title="AI Comparison Tool"
                       description="Compare AI players' performance, features, and specs, helping you choose the best AI solution."
                       bgClass="bg-AI-Compare"
-                      href="/ai-comparison"
+                      href="/tools/Comparison"
                     />
                   </Suspense>
                 </div>

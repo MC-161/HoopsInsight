@@ -23,7 +23,7 @@ const TopPlayersWidget: React.FC<TopPlayersWidgetProps> = ({ teamData }) => {
   return (
     <section className="TopPerfomerGrid">
       <HeadingSection icon={MilitaryTechOutlinedIcon} title="Top Performers"/>
-      <div className="TopPerformerWrapper grid grid-cols-2 md:grid-cols-7 gap-4 pt-3">
+      <div className="TopPerformerWrapper grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 pt-3">
         {statCategories.map((stat, index) => (
           <div key={index} onClick={() => navigate(`/player-dash?id=${topPerformers[stat].playerID.join(", ")}`)} className=" shadow-white p-4 rounded-md shadow-sm hover:shadow-glow cursor-pointer bg-background-alt">
             <h3 className="text-lg font-bold capitalize text-white">{stat}</h3>
