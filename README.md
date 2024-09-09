@@ -39,10 +39,11 @@ HoopsInsight is an interactive web application that allows users to view analyti
 ## 📊 Screenshots
 
 ### Player Dashboard
-![Player Dashboard](./assets/player_dashboard.png)
+![Screenshot 2024-09-09 at 15-35-37 HoopsInsight](https://github.com/user-attachments/assets/72fa850b-b4a1-4279-a81f-6fbf6a66bf93)
+
 
 ### Team Dashboard
-![Team Dashboard](./assets/team_dashboard.png)
+![PlayerDash](https://github.com/user-attachments/assets/a70e832f-2196-4131-81e7-1f89b47c70f5)
 
 ---
 
