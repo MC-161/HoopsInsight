@@ -2,22 +2,24 @@
 import React, { useState } from 'react';
 import FeatureCard from './FeatureCard';
 import { Feature } from '@/types/Landing/LandingTypes';
-import tempimage from "@/assets/Landing.webp"
+import search from "@/assets/Landing/Features/SearchDash.png"
+import profiles from "@/assets/Landing/Features/PlayerDash.png"
+import visuals from "@/assets/Landing/Features/visuals.png"
 
 const FeaturesSection: React.FC = () => {
   const [hoveredFeature, setHoveredFeature] = useState<Feature | null>(null);
 
   const features: Feature[] = [
-    { title: 'Search', description: 'Easily find the information you need with our powerful search function. Quickly locate players, teams', image:tempimage},
-    { title: 'Interactive Visualisations', description: 'With our interactive visualisation feature. Dive deep into NBA  statistics and explore player performance, team dynamics, and game  trends', image:tempimage },
-    { title: 'Profiles', description: 'Innovative feature called Play Profiles and Team Profiles, offering  users a detailed insight into individual players and teams with  comprehensive statistical data', image:tempimage }
+    { title: 'Search', description: 'Easily find the information you need with our powerful search function. Quickly locate players, teams', image:search},
+    { title: 'Interactive Visualisations', description: 'With our interactive visualisation feature. Dive deep into NBA  statistics and explore player performance, team dynamics, and game  trends', image:visuals },
+    { title: 'Profiles', description: 'Innovative feature called Play Profiles and Team Profiles, offering  users a detailed insight into individual players and teams with  comprehensive statistical data', image:profiles }
   ];
 
   return (
     <section className="Features flex flex-col items-center h-full text-primary-main lg:grid lg:grid-cols-[45%_55%] lg:mt-14 lg:pl-24 lg:pb-10">
       <section className="h-[700px] mt-4 w-full flex items-center justify-center md:items-start md:h-fit lg:mt-0">
         <div className="change w-5/6 flex flex-col items-center h-[600px] md:w-full md:h-fit md:mt-10 md:m-8 lg:w-4/6 lg:mt-0">
-          <p className="font-bold text-2xl tracking-widest">NBA V2 FEATURES</p>
+          <p className="font-bold text-2xl tracking-widest">HOOPS FEATURES</p>
           <p className="text-primary-alt font-extralight text-center px-8 py-4">
             Discover the Powerful Features of Our NBA Web App
           </p>

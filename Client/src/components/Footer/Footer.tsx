@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <div className="flex flex-wrap justify-between items-center">
           <div className="w-full md:w-1/4 text-center md:text-left mb-6 md:mb-0">
             <img src={logo} alt="Logo" className="h-10 mx-auto md:mx-0" />
-            <p className="mt-2 text-sm font-bold">NBA Stats V2 </p>
+            <p className="mt-2 text-sm font-bold">HOOPSINSIGHT </p>
           </div>
           <div className="w-full grid grid-cols-4 gap-6 lg:flex lg:w-3/4 justify-between text-sm">
             <div>

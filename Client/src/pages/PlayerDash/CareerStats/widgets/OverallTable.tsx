@@ -3,7 +3,6 @@ import HeadingSection from "../../Overview/components/HeadingSection";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,

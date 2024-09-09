@@ -38,7 +38,7 @@ const TeamDash = () => {
     <div className="bg-black">
       <section className="banner w-full h-72 Searchbg"></section>
       <section className="tabs_Wrapper grid grid-cols-1 relative h-32 w-full text-primary-main -mt-20">
-        <div className="placeholdn h-10 ml-72">
+        <div className="placeholdn h-10 ml-72 md:ml-[460px] lg:ml-72">
           <p className="fName text-sm font-extralight">{firstname}</p>
           <p className="lName font-bold text-2xl">{lastname}</p>
         </div>

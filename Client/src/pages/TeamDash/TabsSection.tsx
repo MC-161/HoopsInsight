@@ -4,7 +4,6 @@ import Footer from "@/components/Footer/Footer";
 import Overview from "@/pages/TeamDash/Overview/Overview";
 import TeamStats from "./TeamStats/TeamStats";
 import Roster from "./Roster/Roster";
-import Schedule from "./Schedule/Schedule";
 import ScheduleC from "./Schedule/Schedule";
 
 
@@ -21,10 +20,6 @@ const TabsSection: React.FC<TabsSectionProps> = ({teamData}) => {
     setSelectedTab(
       value as "overview" | "teamStats" | "roster" | "schedule"
     );
-  };
-
-  const changeToteamStatsTab = () => {
-    setSelectedTab("teamStats");
   };
 
   return (
