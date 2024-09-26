@@ -7,6 +7,7 @@ export default defineConfig({
   define: {
     'process.env': {
       VITE_API_URL: process.env.VITE_API_URL,
+      VITE_YT_KEY: process.env.VITE_YT_KEY,
     },
   },
   resolve: {
