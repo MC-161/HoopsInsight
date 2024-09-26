@@ -4,7 +4,6 @@ import { TeamVideos } from "@/types/Dash/TeamDash";
 
 interface VideosWidgetProps {
   teamVideos: TeamVideos;
-  apiKey: string; // Pass YouTube API key as a prop
 }
 
 const VideosWidget: React.FC<VideosWidgetProps> = ({ teamVideos}) => {
